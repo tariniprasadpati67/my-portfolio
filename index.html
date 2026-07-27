@@ -1,621 +1,605 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Tarini prasad Pati · full‑stack vibe</title>
-    <!-- Font Awesome 6 (free) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <style>
-        /* ---------- RESET & BASE ---------- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Tarini Prasad Pati - Personal Portfolio & Frontend Web Developer. Clean, responsive, dark glassmorphism web applications." />
+    <title>Tarini Prasad Pati | Full-Stack &amp; Frontend Developer</title>
 
-        html {
-            scroll-behavior: smooth;
-        }
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
 
-        body {
-            background: #070b14;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1.8rem 1rem;
-        }
+    <!-- Font Awesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-        /* ---------- GLASS CARD ---------- */
-        .glass-panel {
-            max-width: 1320px;
-            width: 100%;
-            background: rgba(12, 17, 28, 0.7);
-            backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
-            border-radius: 3.8rem;
-            padding: 2.5rem 2.8rem;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            transition: all 0.2s;
-        }
-
-        /* ---------- TOP BAR (animated logo) ---------- */
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem 2rem;
-            margin-bottom: 2.2rem;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #dbc4ff, #b086ff, #8b6bdd);
-            background-size: 200% 200%;
-            animation: shimmer 5s ease-in-out infinite;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .logo i {
-            font-size: 2.2rem;
-            color: #b388ff;
-            filter: drop-shadow(0 0 14px #a77aff77);
-        }
-
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.2rem 2rem;
-        }
-
-        .nav-links a {
-            color: #bcc6dd;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            padding: 0.25rem 0;
-            border-bottom: 2px solid transparent;
-            transition: 0.25s;
-            letter-spacing: 0.2px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-        }
-
-        .nav-links a i {
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        .nav-links a:hover {
-            color: #fff;
-            border-bottom-color: #a77aff;
-            transform: translateY(-1px);
-        }
-
-        /* ---------- HERO ---------- */
-        .hero-grid {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2rem 2.5rem;
-            margin-bottom: 2.8rem;
-        }
-
-        .hero-left {
-            flex: 1 1 300px;
-        }
-
-        .hero-left .greet {
-            font-size: 1.2rem;
-            color: #b5c2de;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .hero-left h1 {
-            font-size: 3.6rem;
-            font-weight: 700;
-            background: linear-gradient(145deg, #f3e9ff, #c7aeff, #9b7aff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1.1;
-            margin: 0.4rem 0 0.8rem;
-        }
-
-        .badge-achievement {
-            background: rgba(160, 120, 255, 0.12);
-            border: 1px solid #4a3b73;
-            border-radius: 50px;
-            padding: 0.5rem 1.8rem;
-            display: inline-block;
-            backdrop-filter: blur(4px);
-            font-weight: 500;
-            color: #ccbeff;
-            margin-bottom: 1.2rem;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .badge-achievement i {
-            margin-right: 10px;
-            color: #b388ff;
-        }
-
-        .badge-achievement:hover {
-            background: rgba(160, 120, 255, 0.2);
-            border-color: #8b6bdd;
-            transform: scale(1.02);
-        }
-
-        .hero-left p {
-            color: #c8d2e8;
-            font-size: 1.05rem;
-            line-height: 1.6;
-            max-width: 500px;
-        }
-
-        .hero-avatar {
-            flex: 0 0 auto;
-            background: radial-gradient(circle at 30% 30%, #20273f, #0e121f);
-            border-radius: 50%;
-            padding: 0.6rem;
-            box-shadow: 0 20px 40px -8px #000000dd, 0 0 0 1px #ffffff0a;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* ----- PHOTO AVATAR STYLES ----- */
-        .avatar-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            background: #111620;
-            display: block;
-            box-shadow: 0 20px 40px -8px #000000dd, 0 0 0 1px #ffffff0a;
-            transition: 0.3s;
-            border: 2px solid rgba(160, 120, 255, 0.2);
-        }
-
-        .avatar-img:hover {
-            transform: scale(1.05);
-            filter: drop-shadow(0 0 34px #a77affaa);
-            border-color: #b388ff;
-        }
-
-        /* ---------- 2-COLUMN GRID ---------- */
-        .grid-2col {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2.5rem 0 2.5rem;
-        }
-
-        .info-card {
-            background: rgba(10, 15, 26, 0.6);
-            backdrop-filter: blur(6px);
-            border-radius: 2.4rem;
-            padding: 1.8rem 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            box-shadow: 0 12px 28px -12px #000000cc;
-            transition: 0.3s ease;
-            animation: cardGlow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes cardGlow {
-            0% { border-color: rgba(255, 255, 255, 0.03); }
-            100% { border-color: rgba(160, 120, 255, 0.15); }
-        }
-
-        .info-card:hover {
-            transform: translateY(-6px);
-            border-color: #6a4eaa;
-            box-shadow: 0 24px 48px -16px #000000ee;
-        }
-
-        .card-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            color: #e4eaf5;
-        }
-
-        .card-title i {
-            color: #b388ff;
-            font-size: 1.6rem;
-            width: 2rem;
-        }
-
-        /* skill tags */
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem 1rem;
-        }
-
-        .skill-tag {
-            background: #1a2135;
-            padding: 0.4rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #d2dcf0;
-            border: 1px solid #2e354b;
-            transition: 0.2s;
-            cursor: pointer;
-            letter-spacing: 0.2px;
-        }
-
-        .skill-tag i {
-            margin-right: 6px;
-            color: #b388ff;
-            font-size: 0.8rem;
-        }
-
-        .skill-tag:hover {
-            background: #2c334b;
-            border-color: #7a5fd0;
-            color: white;
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(160, 120, 255, 0.15);
-        }
-
-        /* education & project items */
-        .edu-item, .project-item {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #1e2538;
-            transition: 0.2s;
-            cursor: pointer;
-        }
-
-        .edu-item:hover, .project-item:hover {
-            padding-left: 8px;
-            border-bottom-color: #6a4eaa;
-        }
-
-        .edu-item:last-child, .project-item:last-child {
-            border-bottom: none;
-        }
-
-        .edu-item strong {
-            color: #d7c6ff;
-            font-weight: 600;
-        }
-
-        .edu-item span {
-            color: #a8b5d0;
-            font-size: 0.9rem;
-            display: block;
-            margin-top: 3px;
-        }
-
-        .project-item .proj-title {
-            font-weight: 600;
-            color: #d2c6f0;
-            font-size: 1.05rem;
-        }
-
-        .project-item .proj-desc {
-            color: #abb6cf;
-            font-size: 0.9rem;
-            padding-left: 0.2rem;
-        }
-
-        .project-item i {
-            color: #b388ff;
-            width: 1.4rem;
-            font-size: 0.9rem;
-        }
-
-        .highlight-badge {
-            background: rgba(179, 136, 255, 0.08);
-            padding: 0.3rem 0.9rem;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: #bda9ff;
-            border: 1px solid #463a6b;
-            display: inline-block;
-            margin-top: 4px;
-            cursor: default;
-            transition: 0.2s;
-        }
-
-        .highlight-badge:hover {
-            background: rgba(179, 136, 255, 0.18);
-            transform: scale(1.02);
-        }
-
-        /* ---------- SECTION IDs for navigation ---------- */
-        #education-section {
-            scroll-margin-top: 80px;
-        }
-
-        #skills-section {
-            scroll-margin-top: 80px;
-        }
-
-        #projects-section {
-            scroll-margin-top: 80px;
-        }
-
-        #contact-section {
-            scroll-margin-top: 80px;
-        }
-
-        /* ---------- CONTACT / FOOTER ---------- */
-        .contact-section {
-            margin-top: 2.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1.2rem;
-            padding-top: 1.8rem;
-            border-top: 1px solid #1f263b;
-        }
-
-        .contact-icons {
-            display: flex;
-            gap: 1.2rem;
-            font-size: 1.8rem;
-        }
-
-        .contact-icons a {
-            color: #aab4cc;
-            transition: 0.3s;
-            display: inline-block;
-            cursor: pointer;
-        }
-
-        .contact-icons a:hover {
-            color: #b388ff;
-            transform: scale(1.15) translateY(-4px) rotate(3deg);
-        }
-
-        .contact-text {
-            color: #b3bdd6;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-        }
-
-        .contact-text i {
-            color: #b388ff;
-            margin-right: 8px;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid #5f4c8f;
-            color: #cdc0f0;
-            padding: 0.6rem 1.8rem;
-            border-radius: 40px;
-            font-weight: 500;
-            transition: 0.3s;
-            cursor: pointer;
-            backdrop-filter: blur(2px);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-outline i {
-            color: #b388ff;
-        }
-
-        .btn-outline:hover {
-            background: #2d234a;
-            border-color: #b388ff;
-            color: white;
-            transform: scale(1.04);
-            box-shadow: 0 0 30px rgba(160, 120, 255, 0.15);
-        }
-
-        /* ---------- RESPONSIVE ---------- */
-        @media (max-width: 700px) {
-            .glass-panel {
-                padding: 1.8rem 1.2rem;
-                border-radius: 2.5rem;
-            }
-            .hero-left h1 {
-                font-size: 2.6rem;
-            }
-            .avatar-img {
-                width: 110px;
-                height: 110px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-left h1 {
-                font-size: 2.2rem;
-            }
-            .grid-2col {
-                grid-template-columns: 1fr;
-            }
-            .contact-section {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .nav-links {
-                gap: 0.6rem 1rem;
-            }
-            .avatar-img {
-                width: 90px;
-                height: 90px;
-            }
-        }
-
-        /* ---------- extra pulse animation for badges ---------- */
-        .pulse-once {
-            animation: pulse 2s ease-in-out 2;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(160, 120, 255, 0); }
-            50% { box-shadow: 0 0 25px 5px rgba(160, 120, 255, 0.15); }
-            100% { box-shadow: 0 0 0 0 rgba(160, 120, 255, 0); }
-        }
-
-        /* Python badge style */
-        .python-badge {
-            background: #306998;
-            color: white;
-            border-color: #ffd43b;
-        }
-        .python-badge i {
-            color: #ffd43b;
-        }
-    </style>
+    <!-- Custom Modular CSS -->
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-<div class="glass-panel" id="app">
+    <!-- Canvas Particle Background -->
+    <canvas id="particle-canvas"></canvas>
 
-    <!-- ===== TOP BAR ===== -->
-    <nav class="top-bar">
-        <div class="logo">
-            <i class="fas fa-code"></i> Tarini<span style="color:#b9a6ff;">.</span>
-        </div>
-        <div class="nav-links">
-            <a href="#home"><i class="fas fa-house"></i> Home</a>
-            <a href="#education-section"><i class="fas fa-user-astronaut"></i> About</a>
-            <a href="#skills-section"><i class="fas fa-gem"></i> Skills</a>
-            <a href="#projects-section"><i class="fas fa-folder-open"></i> Projects</a>
-            <a href="#contact-section"><i class="fas fa-paper-plane"></i> Contact</a>
-        </div>
-    </nav>
+    <!-- Ambient Glowing Orbs -->
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
 
-    <!-- ===== HERO (HOME) ===== -->
-    <div class="hero-grid" id="home">
-        <div class="hero-left">
-            <div class="greet"><i class="fas fa-hand-peace" style="margin-right: 8px; color:#b388ff;"></i> Hi, I'm</div>
-            <h1>Tarini prasad <br>Pati</h1>
-            <div class="badge-achievement" onclick="showAchievement()">
-                <i class="fas fa-trophy"></i> passionate · creative · full-stack ready
+    <!-- Top Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Floating Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobile-nav">
+        <button class="mobile-nav-close" id="mobile-nav-close"><i class="fas fa-times"></i></button>
+        <a href="#home" class="nav-link mobile-link"><i class="fas fa-house"></i> Home</a>
+        <a href="#about" class="nav-link mobile-link"><i class="fas fa-user-astronaut"></i> About</a>
+        <a href="#skills" class="nav-link mobile-link"><i class="fas fa-gem"></i> Skills</a>
+        <a href="#projects" class="nav-link mobile-link"><i class="fas fa-folder-open"></i> Projects</a>
+        <a href="#contact" class="nav-link mobile-link"><i class="fas fa-paper-plane"></i> Contact</a>
+    </div>
+
+    <!-- MAIN CONTAINER WRAPPER -->
+    <div class="wrapper">
+
+        <!-- ===== NAVBAR ===== -->
+        <nav class="navbar">
+            <a href="#home" class="brand-logo">
+                <i class="fas fa-code"></i> Tarini<span>.Pati</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active"><i class="fas fa-house"></i> Home</a></li>
+                <li><a href="#about" class="nav-link"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="#skills" class="nav-link"><i class="fas fa-layer-group"></i> Skills</a></li>
+                <li><a href="#projects" class="nav-link"><i class="fas fa-cubes"></i> Projects</a></li>
+                <li><a href="#contact" class="nav-link nav-cta"><i class="fas fa-paper-plane"></i> Connect</a></li>
+            </ul>
+            <button class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <!-- ===== HERO SECTION ===== -->
+        <header class="hero" id="home">
+            <div class="hero-content">
+                <div class="badge-status">
+                    <span class="pulse-dot"></span> Available for Work &amp; Collaboration
+                </div>
+                <h1 class="hero-title">
+                    Hi, I'm <br>
+                    <span class="gradient-text">Tarini Prasad Pati</span>
+                </h1>
+                <div class="hero-subtitle">
+                    <i class="fas fa-terminal" style="color: var(--cyan);"></i>
+                    <span id="typewriter" class="typewriter-text"></span>
+                </div>
+                <p class="hero-bio">
+                    I craft beautiful, ultra-responsive web applications with modern HTML5, CSS3 &amp; JavaScript logic.
+                    Every day I push code to level up on my journey to becoming a Full-Stack Master.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> Explore Work
+                    </a>
+                    <a href="#contact" class="btn btn-glass">
+                        <i class="fas fa-comments"></i> Quick Contact
+                    </a>
+                    <button class="btn btn-glass btn-icon-only" onclick="copyEmail()" title="Copy Email">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
             </div>
-            <p>I craft beautiful, responsive websites with HTML, CSS &amp; JavaScript. <br>Every day I level up — next stop: Full Stack Developer.</p>
+
+            <!-- Avatar Picture Card -->
+            <div class="hero-avatar-wrapper">
+                <div class="avatar-ring"></div>
+                <div class="avatar-card">
+                    <img src="IMG_20260522_152214_053.webp" alt="Tarini Prasad Pati" class="avatar-img">
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== STATS COUNTER BAR ===== -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-laptop-code"></i></div>
+                <div class="stat-info">
+                    <h3>5+</h3>
+                    <p>Web Projects Built</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="color: var(--cyan); background: rgba(6, 182, 212, 0.12);"><i
+                        class="fas fa-code-branch"></i></div>
+                <div class="stat-info">
+                    <h3>4+</h3>
+                    <p>Core Technologies</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="color: var(--pink); background: rgba(236, 72, 153, 0.12);"><i
+                        class="fas fa-graduation-cap"></i></div>
+                <div class="stat-info">
+                    <h3>Diploma</h3>
+                    <p>Mechanical + Coding</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="color: var(--emerald); background: rgba(16, 185, 129, 0.12);"><i
+                        class="fas fa-bolt"></i></div>
+                <div class="stat-info">
+                    <h3>100%</h3>
+                    <p>Passion &amp; Drive</p>
+                </div>
+            </div>
         </div>
 
-        <!-- ===== 📸 YOUR PHOTO GOES HERE ===== -->
-        <div class="hero-avatar">
-            <img src="IMG_20260522_152214_053.webp" alt="Tarini Pati" class="avatar-img">
-        </div>
-        <!-- =================================== -->
+        <!-- ===== ABOUT & EDUCATION SECTION ===== -->
+        <section class="about-section" id="about">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-user"></i> About Me</span>
+                <h2 class="section-title">My Journey &amp; Growth</h2>
+                <p class="section-desc">Blending analytical engineering discipline with modern web development
+                    creativity.</p>
+            </div>
+
+            <div class="about-grid">
+                <!-- Education Timeline -->
+                <div class="glass-card">
+                    <h3 class="card-title"><i class="fas fa-graduation-cap"></i> Education Timeline</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">Present</div>
+                            <div class="timeline-title">Diploma in Mechanical Engineering</div>
+                            <div class="timeline-desc">Building strong logical foundations, engineering mechanics, and
+                                structural design skills.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">Continuous Track</div>
+                            <div class="timeline-title">Frontend &amp; Full-Stack Development</div>
+                            <div class="timeline-desc">Mastering modern HTML5, responsive CSS Grid/Flexbox, JavaScript
+                                ES6, and project architectures.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">Core Discipline</div>
+                            <div class="timeline-title">Computer Programming &amp; Logic</div>
+                            <div class="timeline-desc">Algorithm design, Python programming fundamentals, and
+                                interactive user interfaces.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strengths & Vision -->
+                <div class="glass-card">
+                    <h3 class="card-title"><i class="fas fa-lightbulb"></i> Philosophy &amp; Strengths</h3>
+                    <p style="margin-bottom: 1.2rem; font-size: 1.02rem; color: var(--text-light);">
+                        I believe in building web experiences that are not only visually captivating but also lightning
+                        fast and responsive across all devices.
+                    </p>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div
+                            style="display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.03); padding: 0.8rem 1rem; border-radius: var(--radius-md);">
+                            <i class="fas fa-mobile-alt" style="color: var(--cyan); font-size: 1.2rem;"></i>
+                            <div>
+                                <strong style="color: var(--text-heading);">Mobile-First Responsive Design</strong>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Flawless layout scaling on
+                                    phone, tablet, &amp; desktop.</p>
+                            </div>
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.03); padding: 0.8rem 1rem; border-radius: var(--radius-md);">
+                            <i class="fas fa-paint-brush" style="color: var(--pink); font-size: 1.2rem;"></i>
+                            <div>
+                                <strong style="color: var(--text-heading);">Modern Dark Glassmorphism UI</strong>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Eye-catching gradient glows,
+                                    smooth blur, &amp; polished theme.</p>
+                            </div>
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.03); padding: 0.8rem 1rem; border-radius: var(--radius-md);">
+                            <i class="fas fa-code" style="color: var(--primary); font-size: 1.2rem;"></i>
+                            <div>
+                                <strong style="color: var(--text-heading);">Clean &amp; Maintainable Code</strong>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Modular file organization for
+                                    HTML, CSS &amp; JavaScript.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SKILLS MATRIX SECTION ===== -->
+        <section class="skills-section" id="skills">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-layer-group"></i> Technical Matrix</span>
+                <h2 class="section-title">Skills &amp; Technologies</h2>
+                <p class="section-desc">Tools and languages I use to bring modern web applications to life.</p>
+            </div>
+
+            <!-- Skills Filter Buttons -->
+            <div class="filter-bar" id="skills-filter">
+                <button class="filter-btn active" data-filter="all">All Skills</button>
+                <button class="filter-btn" data-filter="frontend">Frontend</button>
+                <button class="filter-btn" data-filter="languages">Languages &amp; Logic</button>
+                <button class="filter-btn" data-filter="tools">Design &amp; Media</button>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="skills-grid">
+                <div class="skill-card" data-category="frontend">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="color: #e34f26;"><i class="fab fa-html5"></i></div>
+                        <div>
+                            <div class="skill-name">HTML5</div>
+                            <div class="skill-category">Semantic Markup</div>
+                        </div>
+                    </div>
+                    <div class="skill-meter-bg">
+                        <div class="skill-meter-fill" style="width: 95%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-category="frontend">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="color: #1572b6;"><i class="fab fa-css3-alt"></i></div>
+                        <div>
+                            <div class="skill-name">CSS3 &amp; Glassmorphism</div>
+                            <div class="skill-category">Flexbox / Grid / Animations</div>
+                        </div>
+                    </div>
+                    <div class="skill-meter-bg">
+                        <div class="skill-meter-fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-category="frontend">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="color: #f7df1e;"><i class="fab fa-js-square"></i></div>
+                        <div>
+                            <div class="skill-name">JavaScript (ES6+)</div>
+                            <div class="skill-category">DOM Manipulation &amp; Logic</div>
+                        </div>
+                    </div>
+                    <div class="skill-meter-bg">
+                        <div class="skill-meter-fill" style="width: 82%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-category="frontend">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="color: var(--cyan);"><i class="fas fa-mobile-alt"></i></div>
+                        <div>
+                            <div class="skill-name">Responsive Web Design</div>
+                            <div class="skill-category">Mobile First Breakpoints</div>
+                        </div>
+                    </div>
+                    <div class="skill-meter-bg">
+                        <div class="skill-meter-fill" style="width: 95%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-category="languages">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="color: #3776ab;"><i class="fab fa-python"></i></div>
+                        <div>
+                            <div class="skill-name">Python</div>
+                            <div class="skill-category">Core Concepts &amp; Logic</div>
+                        </div>
+                    </div>
+                    <div class="skill-meter-bg">
+                        <div class="skill-meter-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-category="languages">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="color: var(--primary);"><i class="fas fa-microchip"></i></div>
+                        <div>
+                            <div class="skill-name">Computer Programming</div>
+                            <div class="skill-category">Problem Solving Logic</div>
+                        </div>
+                    </div>
+                    <div class="skill-meter-bg">
+                        <div class="skill-meter-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-category="tools">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="color: #00c4cc;"><i class="fas fa-paint-brush"></i></div>
+                        <div>
+                            <div class="skill-name">Canva Design</div>
+                            <div class="skill-category">Visual Assets &amp; Graphics</div>
+                        </div>
+                    </div>
+                    <div class="skill-meter-bg">
+                        <div class="skill-meter-fill" style="width: 88%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-category="tools">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="color: var(--pink);"><i class="fas fa-video"></i></div>
+                        <div>
+                            <div class="skill-name">CapCut Editing</div>
+                            <div class="skill-category">Video Media Production</div>
+                        </div>
+                    </div>
+                    <div class="skill-meter-bg">
+                        <div class="skill-meter-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROJECTS SHOWCASE SECTION ===== -->
+        <section class="projects-section" id="projects">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-cubes"></i> Featured Work</span>
+                <h2 class="section-title">Projects &amp; Clones</h2>
+                <p class="section-desc">Interactive web applications and clone interfaces built from scratch.</p>
+            </div>
+
+            <!-- Project Filter Buttons -->
+            <div class="filter-bar" id="projects-filter">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="clones">Clones</button>
+                <button class="filter-btn" data-filter="apps">Web Apps</button>
+                <button class="filter-btn" data-filter="tools">Tools</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="projects-grid">
+
+                <!-- WhatsApp Clone -->
+                <div class="project-card" data-category="clones" onclick="openProjectModal('whatsapp')">
+                    <div class="project-badge"><i class="fab fa-whatsapp"></i> WhatsApp UI</div>
+                    <h3 class="project-title">
+                        WhatsApp Web Clone
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </h3>
+                    <p class="project-desc">Responsive WhatsApp Web clone with chat panel UI, contact search, message
+                        bubble layout, and dark theme polish.</p>
+                    <div class="project-tags">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <div class="project-link-text">
+                        Click to view details <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Spotify Clone -->
+                <div class="project-card" data-category="clones" onclick="openProjectModal('spotify')">
+                    <div class="project-badge"
+                        style="color: #1db954; border-color: rgba(29, 185, 84, 0.3); background: rgba(29, 185, 84, 0.12);">
+                        <i class="fab fa-spotify"></i> Music Player
+                    </div>
+                    <h3 class="project-title">
+                        Spotify Web Clone
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </h3>
+                    <p class="project-desc">Sleek responsive music player interface inspired by Spotify. Features
+                        playback bar, sidebar playlists, and visualizer layout.</p>
+                    <div class="project-tags">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS Grid</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <div class="project-link-text">
+                        Click to view details <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Portfolio -->
+                <div class="project-card" data-category="apps" onclick="openProjectModal('portfolio')">
+                    <div class="project-badge"
+                        style="color: var(--cyan); border-color: rgba(6, 182, 212, 0.3); background: rgba(6, 182, 212, 0.12);">
+                        <i class="fas fa-id-card"></i> Personal UI
+                    </div>
+                    <h3 class="project-title">
+                        Glassmorphism Portfolio
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </h3>
+                    <p class="project-desc">Modern developer portfolio with dark glassmorphism 2.0 theme, background
+                        particle canvas, skill filter, and detail popups.</p>
+                    <div class="project-tags">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS System</span>
+                        <span class="tech-tag">JS ES6</span>
+                    </div>
+                    <div class="project-link-text">
+                        Click to view details <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Smart Calculator -->
+                <div class="project-card" data-category="tools" onclick="openProjectModal('calculator')">
+                    <div class="project-badge"
+                        style="color: var(--gold); border-color: rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.12);">
+                        <i class="fas fa-calculator"></i> Interactive Tool
+                    </div>
+                    <h3 class="project-title">
+                        Smart Glass Calculator
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </h3>
+                    <p class="project-desc">Interactive web calculator with full arithmetic logic, error handling, glass
+                        grid key animations, and clear function.</p>
+                    <div class="project-tags">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS Grid</span>
+                        <span class="tech-tag">JS Logic</span>
+                    </div>
+                    <div class="project-link-text">
+                        Click to view details <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Login Page -->
+                <div class="project-card" data-category="apps" onclick="openProjectModal('login')">
+                    <div class="project-badge"
+                        style="color: var(--pink); border-color: rgba(236, 72, 153, 0.3); background: rgba(236, 72, 153, 0.12);">
+                        <i class="fas fa-sign-in-alt"></i> Auth UI
+                    </div>
+                    <h3 class="project-title">
+                        Glassmorphic Login Portal
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </h3>
+                    <p class="project-desc">Attractive responsive authentication screen featuring password visibility
+                        toggle, animated glowing backdrop, and form validation.</p>
+                    <div class="project-tags">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">Glass CSS</span>
+                        <span class="tech-tag">JS Form</span>
+                    </div>
+                    <div class="project-link-text">
+                        Click to view details <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Smart To-Do List App -->
+                <div class="project-card" data-category="apps" onclick="openProjectModal('todo')">
+                    <div class="project-badge"
+                        style="color: var(--emerald); border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.12);">
+                        <i class="fas fa-tasks"></i> Productivity
+                    </div>
+                    <h3 class="project-title">
+                        Smart To-Do List App
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </h3>
+                    <p class="project-desc">Feature-rich task management app with category filters, priority tags,
+                        completion toggles, and localStorage auto-save.</p>
+                    <div class="project-tags">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3 Glass</span>
+                        <span class="tech-tag">JS LocalStorage</span>
+                    </div>
+                    <div class="project-link-text">
+                        Click to view details <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== CONTACT & CONNECT SECTION ===== -->
+        <section class="contact-section" id="contact">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-paper-plane"></i> Get In Touch</span>
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-desc"></p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Contact Info Column -->
+                <div class="contact-info">
+                    <div class="contact-item" onclick="copyEmail()">
+                        <div class="contact-icon-box"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-item-text">
+                            <h4>Email Address (Click to Copy)</h4>
+                            <p>t.tarini2009@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon-box" style="color: var(--cyan); background: rgba(6, 182, 212, 0.15);">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>Location</h4>
+                            <p>Odisha, India (Jajpur)</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon-box"
+                            style="color: var(--emerald); background: rgba(16, 185, 129, 0.15);"><i
+                                class="fas fa-clock"></i></div>
+                        <div class="contact-item-text">
+                            <h4>Status</h4>
+                            <p>Open for Opportunities</p>
+                        </div>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div style="margin-top: 1rem;">
+                        <h4
+                            style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.8rem; letter-spacing: 0.5px;">
+                            Social Profiles</h4>
+                        <div class="social-links-bar">
+                            <a class="social-btn" onclick="showToast('GitHub: Tariniprasadpati67')" title="GitHub"><i
+                                    class="fab fa-github"></i></a>
+                            <a class="social-btn" onclick="showToast('LinkedIn: Tarini Pati')" title="LinkedIn"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a class="social-btn" onclick="showToast('Instagram: @t.tarini.97')" title="Instagram"><i
+                                    class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            <div>
+                &copy; <span id="current-year">2026</span> <strong>Tarini Prasad Pati</strong>. Crafted with <i
+                    class="fas fa-heart" style="color: var(--pink);"></i> &amp; Dark Glassmorphism.
+            </div>
+            <div>
+                Built with Pure HTML5, CSS3 &amp; JavaScript
+            </div>
+        </footer>
 
     </div>
 
-    <!-- ===== 2-COLUMN GRID ===== -->
-    <div class="grid-2col">
-        <!-- LEFT: SKILLS (ID: skills-section) -->
-        <div class="info-card" id="skills-section">
-            <div class="card-title"><i class="fas fa-cogs"></i> Skills &amp; tools</div>
-            <div class="skill-tags">
-                <span class="skill-tag"><i class="fab fa-html5"></i> HTML5</span>
-                <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
-                <span class="skill-tag"><i class="fab fa-js-square"></i> JavaScript (Basic)</span>
-                <span class="skill-tag"><i class="fas fa-mobile-alt"></i> Responsive Design</span>
-                <span class="skill-tag"><i class="fas fa-video"></i> CapCut</span>
-                <span class="skill-tag"><i class="fas fa-paint-brush"></i> Canva</span>
-                <span class="skill-tag"><i class="fas fa-book-open"></i> Diploma (Learning)</span>
-                <span class="skill-tag"><i class="fas fa-code"></i> Computer Programming</span>
-                <span class="skill-tag python-badge"><i class="fab fa-python"></i> Python (basic)</span>
-            </div>
-            <div style="margin-top: 1.8rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
-                <span class="highlight-badge"><i class="fas fa-star"></i> mechanical</span>
-                <span class="highlight-badge"><i class="fas fa-code"></i> Frontend track</span>
-            </div>
-        </div>
+    <!-- ===== PROJECT DETAILS MODAL POPUP ===== -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+            <i id="modal-icon" class="fas fa-code modal-header-icon"></i>
+            <h3 class="modal-title" id="modal-title">Project Title</h3>
+            <p id="modal-desc" style="color: var(--text-body); font-size: 0.98rem; line-height: 1.6;">Project
+                Description</p>
 
-        <!-- RIGHT: EDUCATION + PROJECTS -->
-        <div class="info-card" id="education-section">
-            <div class="card-title"><i class="fas fa-graduation-cap"></i> Education</div>
-            <div class="edu-item" onclick="showEdu('Diploma')">
-                <strong><i class="fas fa-school" style="margin-right: 8px;"></i>Diploma</strong>
-                <span>mechanical</span>
-            </div>
-            <div class="edu-item" onclick="showEdu('frontend')">
-                <strong><i class="fas fa-laptop"></i> Frontend Development</strong>
-                <span>HTML, CSS, JavaScript · building real projects</span>
-            </div>
-            <div class="edu-item" onclick="showEdu('programming')">
-                <strong><i class="fas fa-microchip"></i> Computer Programming</strong>
-                <span>logic &amp; problem solving</span>
-            </div>
+            <div id="modal-tags" class="project-tags" style="margin-top: 1rem;"></div>
 
-            <div style="margin: 1.8rem 0 1rem 0; border-bottom: 1px solid #242b41;"></div>
+            <h4 style="font-size: 1.05rem; color: var(--text-heading); margin-top: 1.5rem;">Key Features &amp;
+                Highlights</h4>
+            <ul id="modal-features" class="modal-features"></ul>
 
-            <!-- PROJECTS SECTION (ID: projects-section) -->
-            <div class="card-title" style="margin-top: 0.2rem; margin-bottom: 1rem;" id="projects-section">
-                <i class="fas fa-folder-tree"></i> Projects
-            </div>
-            <div class="project-item" onclick="showProject('spotify')">
-                <span class="proj-title"><i class="fab fa-spotify"></i> Spotify Clone</span>
-                <span class="proj-desc">Responsive Spotify UI using HTML &amp; CSS</span>
-            </div>
-            <div class="project-item" onclick="showProject('portfolio')">
-                <span class="proj-title"><i class="fas fa-user-tie"></i> Portfolio Website</span>
-                <span class="proj-desc">Modern personal portfolio — clean &amp; responsive</span>
-            </div>
-            <div class="project-item" onclick="showProject('calculator')">
-                <span class="proj-title"><i class="fas fa-calculator"></i> Calculator</span>
-                <span class="proj-desc">Interactive calculator with HTML, CSS &amp; JS</span>
-            </div>
-            <div class="project-item" onclick="showProject('login')">
-                <span class="proj-title"><i class="fas fa-sign-in-alt"></i> Login Page</span>
-                <span class="proj-desc">Attractive responsive login form with UI polish</span>
-            </div>
-             <div class="project-item" onclick="showProject('whatsapp')">
-                <span class="proj-title"><i class="fab fa-whatsapp"></i> whatsapp clone</span>
-                <span class="proj-desc">Responsive WhatsApp Web clone with real-time chat UI, modern design, and smooth user experience.</span>
-            </div>
-            <div style="margin-top: 1rem;">
-                <span class="highlight-badge"><i class="fas fa-rocket"></i> always building</span>
+            <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+                <button class="btn btn-primary"
+                    onclick="showToast('Demo Preview active on this device!', 'fas fa-play-circle')">
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                </button>
+                <button class="btn btn-glass" onclick="closeModal()">
+                    <i class="fas fa-times"></i> Close Preview
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- ===== CONTACT SECTION (ID: contact-section) ===== -->
-    <div class="contact-section" id="contact-section">
-        <div class="contact-text">
-            <i class="fas fa-envelope"></i> t.tarini2009@gmail.com
-            <i class="fas fa-map-pin" style="margin-left: 12px;"></i> India,odisha(jajpur)
-        </div>
-        <div class="contact-icons">
-            <a onclick="alert('GitHub: Tariniprasadpati67')"><i class="fab fa-github"></i></a>
-            <a onclick="alert('LinkedIn: Tarini Pati')"><i class="fab fa-linkedin-in"></i></a>
-            <a onclick="alert('Twitter: @tarini_codes')"><i class="fab fa-twitter"></i></a>
-            <a onclick="alert('Instagram: @t.tarini.97')"><i class="fab fa-instagram"></i></a>
-            <a onclick="alert('YouTube: Tarini Pati')"><i class="fab fa-youtube"></i></a>
-        </div>
-        <button class="btn-outline" onclick="connectmsg()>
+    <!-- Custom Modular JS -->
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
