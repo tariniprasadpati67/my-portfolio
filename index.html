@@ -24,6 +24,13 @@
 
 <body>
 
+    <!-- Custom Neon Cursor Glow & Spotlight -->
+    <div id="cursor-dot" class="cursor-dot"></div>
+    <div id="cursor-glow" class="cursor-glow"></div>
+
+    <!-- Confetti Canvas Overlay -->
+    <canvas id="confetti-canvas"></canvas>
+
     <!-- Canvas Particle Background -->
     <canvas id="particle-canvas"></canvas>
 
@@ -45,6 +52,7 @@
         <button class="mobile-nav-close" id="mobile-nav-close"><i class="fas fa-times"></i></button>
         <a href="#home" class="nav-link mobile-link"><i class="fas fa-house"></i> Home</a>
         <a href="#about" class="nav-link mobile-link"><i class="fas fa-user-astronaut"></i> About</a>
+        <a href="#terminal-sec" class="nav-link mobile-link"><i class="fas fa-terminal"></i> Terminal</a>
         <a href="#skills" class="nav-link mobile-link"><i class="fas fa-gem"></i> Skills</a>
         <a href="#projects" class="nav-link mobile-link"><i class="fas fa-folder-open"></i> Projects</a>
         <a href="#contact" class="nav-link mobile-link"><i class="fas fa-paper-plane"></i> Contact</a>
@@ -61,13 +69,27 @@
             <ul class="nav-links">
                 <li><a href="#home" class="nav-link active"><i class="fas fa-house"></i> Home</a></li>
                 <li><a href="#about" class="nav-link"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="#terminal-sec" class="nav-link"><i class="fas fa-terminal"></i> Terminal</a></li>
                 <li><a href="#skills" class="nav-link"><i class="fas fa-layer-group"></i> Skills</a></li>
                 <li><a href="#projects" class="nav-link"><i class="fas fa-cubes"></i> Projects</a></li>
                 <li><a href="#contact" class="nav-link nav-cta"><i class="fas fa-paper-plane"></i> Connect</a></li>
             </ul>
-            <button class="menu-toggle" id="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
+
+            <!-- Theme & Sound Controls -->
+            <div class="nav-controls">
+                <div class="theme-picker" id="theme-picker">
+                    <button class="theme-pill active" data-theme="violet" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4);" title="Cyber Violet"></button>
+                    <button class="theme-pill" data-theme="emerald" style="background: linear-gradient(135deg, #10b981, #06b6d4);" title="Emerald Matrix"></button>
+                    <button class="theme-pill" data-theme="ocean" style="background: linear-gradient(135deg, #0284c7, #6366f1);" title="Ocean Aurora"></button>
+                    <button class="theme-pill" data-theme="crimson" style="background: linear-gradient(135deg, #f43f5e, #f59e0b);" title="Crimson Sunset"></button>
+                </div>
+                <button class="sound-toggle-btn" id="sound-toggle" title="Toggle Sound FX">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </nav>
 
         <!-- ===== HERO SECTION ===== -->
@@ -102,24 +124,29 @@
             </div>
 
             <!-- Avatar Picture Card -->
-            <div class="hero-avatar-wrapper">
+            <div class="hero-avatar-wrapper tilt-card">
                 <div class="avatar-ring"></div>
                 <div class="avatar-card">
                     <img src="IMG_20260522_152214_053.webp" alt="Tarini Prasad Pati" class="avatar-img">
                 </div>
+                <!-- Floating Orbit Satellites -->
+                <div class="sat-badge sat-1"><i class="fab fa-html5" style="color: #e34f26;"></i> HTML5</div>
+                <div class="sat-badge sat-2"><i class="fab fa-css3-alt" style="color: #1572b6;"></i> CSS3</div>
+                <div class="sat-badge sat-3"><i class="fab fa-js" style="color: #f7df1e;"></i> JS ES6</div>
+                <div class="sat-badge sat-4"><i class="fab fa-python" style="color: #3776ab;"></i> Python</div>
             </div>
         </header>
 
         <!-- ===== STATS COUNTER BAR ===== -->
         <div class="stats-grid">
-            <div class="stat-card">
+            <div class="stat-card tilt-card">
                 <div class="stat-icon"><i class="fas fa-laptop-code"></i></div>
                 <div class="stat-info">
                     <h3>5+</h3>
                     <p>Web Projects Built</p>
                 </div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card tilt-card">
                 <div class="stat-icon" style="color: var(--cyan); background: rgba(6, 182, 212, 0.12);"><i
                         class="fas fa-code-branch"></i></div>
                 <div class="stat-info">
@@ -127,7 +154,7 @@
                     <p>Core Technologies</p>
                 </div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card tilt-card">
                 <div class="stat-icon" style="color: var(--pink); background: rgba(236, 72, 153, 0.12);"><i
                         class="fas fa-graduation-cap"></i></div>
                 <div class="stat-info">
@@ -135,7 +162,7 @@
                     <p>Mechanical + Coding</p>
                 </div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card tilt-card">
                 <div class="stat-icon" style="color: var(--emerald); background: rgba(16, 185, 129, 0.12);"><i
                         class="fas fa-bolt"></i></div>
                 <div class="stat-info">
@@ -144,6 +171,48 @@
                 </div>
             </div>
         </div>
+
+        <!-- ===== INTERACTIVE TERMINAL SECTION ===== -->
+        <section class="terminal-section" id="terminal-sec">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-terminal"></i> Interactive Shell</span>
+                <h2 class="section-title">Developer Terminal</h2>
+                <p class="section-desc">Type commands or click quick actions below to explore my profile like a pro engineer.</p>
+            </div>
+
+            <div class="terminal-card glass-card">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="dot dot-red"></span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-green"></span>
+                    </div>
+                    <div class="terminal-title">tarini@portfolio:~</div>
+                    <div class="terminal-status"><i class="fas fa-wifi"></i> Connected</div>
+                </div>
+
+                <div class="terminal-quick-chips">
+                    <button class="chip-btn" data-cmd="whoami"><i class="fas fa-user-astronaut"></i> whoami</button>
+                    <button class="chip-btn" data-cmd="skills"><i class="fas fa-code"></i> skills</button>
+                    <button class="chip-btn" data-cmd="projects"><i class="fas fa-cubes"></i> projects</button>
+                    <button class="chip-btn" data-cmd="contact"><i class="fas fa-paper-plane"></i> contact</button>
+                    <button class="chip-btn" data-cmd="theme"><i class="fas fa-palette"></i> theme</button>
+                    <button class="chip-btn" data-cmd="help"><i class="fas fa-question-circle"></i> help</button>
+                    <button class="chip-btn" data-cmd="clear"><i class="fas fa-trash-alt"></i> clear</button>
+                </div>
+
+                <div class="terminal-body" id="terminal-body">
+                    <div class="term-line output-line">Welcome to Tarini's Interactive Developer Terminal v2.5!</div>
+                    <div class="term-line output-line text-muted">Type <span class="text-cyan">'help'</span> to see available commands or click quick action buttons above.</div>
+                </div>
+
+                <form class="terminal-input-row" id="terminal-form">
+                    <span class="term-prompt">tarini@dev:~$</span>
+                    <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" placeholder="type command here... e.g. whoami" />
+                    <button type="submit" class="term-send-btn"><i class="fas fa-level-down-alt fa-rotate-90"></i></button>
+                </form>
+            </div>
+        </section>
 
         <!-- ===== ABOUT & EDUCATION SECTION ===== -->
         <section class="about-section" id="about">
@@ -503,13 +572,13 @@
             <div class="section-header">
                 <span class="section-tag"><i class="fas fa-paper-plane"></i> Get In Touch</span>
                 <h2 class="section-title">Let's Connect</h2>
-                <p class="section-desc"></p>
+                <p class="section-desc">Have a project in mind or want to connect? Send a message below or reach out directly!</p>
             </div>
 
             <div class="contact-grid">
                 <!-- Contact Info Column -->
                 <div class="contact-info">
-                    <div class="contact-item" onclick="copyEmail()">
+                    <div class="contact-item tilt-card" onclick="copyEmail()">
                         <div class="contact-icon-box"><i class="fas fa-envelope"></i></div>
                         <div class="contact-item-text">
                             <h4>Email Address (Click to Copy)</h4>
@@ -517,7 +586,7 @@
                         </div>
                     </div>
 
-                    <div class="contact-item">
+                    <div class="contact-item tilt-card">
                         <div class="contact-icon-box" style="color: var(--cyan); background: rgba(6, 182, 212, 0.15);">
                             <i class="fas fa-location-dot"></i>
                         </div>
@@ -527,7 +596,7 @@
                         </div>
                     </div>
 
-                    <div class="contact-item">
+                    <div class="contact-item tilt-card">
                         <div class="contact-icon-box"
                             style="color: var(--emerald); background: rgba(16, 185, 129, 0.15);"><i
                                 class="fas fa-clock"></i></div>
@@ -552,14 +621,35 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Glass Contact Form -->
+                <div class="glass-card contact-form-card tilt-card">
+                    <h3 class="card-title"><i class="fas fa-paper-plane"></i> Send Direct Message</h3>
+                    <form id="contact-form" class="glass-form">
+                        <div class="form-group">
+                            <label for="contact-name">Your Name</label>
+                            <input type="text" id="contact-name" class="form-input" placeholder="e.g. Rahul Sharma" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email Address</label>
+                            <input type="email" id="contact-email" class="form-input" placeholder="e.g. rahul@example.com" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" class="form-input" placeholder="Hi Tarini, let me know if you're available for..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
             </div>
         </section>
 
         <!-- ===== FOOTER ===== -->
         <footer class="footer">
             <div>
-                &copy; <span id="current-year">2026</span> <strong>Tarini Prasad Pati</strong>. Crafted with <i
-                    class="fas fa-heart" style="color: var(--pink);"></i> &amp; Dark Glassmorphism.
+                &copy; <span id="current-year">2026</span> <strong>Tarini Prasad Pati</strong>.
             </div>
             <div>
                 Built with Pure HTML5, CSS3 &amp; JavaScript
@@ -583,10 +673,13 @@
                 Highlights</h4>
             <ul id="modal-features" class="modal-features"></ul>
 
+            <!-- Live Simulator Container -->
+            <div id="modal-simulator" class="modal-simulator"></div>
+
             <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
-                <button class="btn btn-primary"
-                    onclick="showToast('Demo Preview active on this device!', 'fas fa-play-circle')">
-                    <i class="fas fa-external-link-alt"></i> Live Demo
+                <button class="btn btn-primary" id="modal-demo-btn"
+                    onclick="showToast('Live Interactive Simulator running above!', 'fas fa-play-circle')">
+                    <i class="fas fa-external-link-alt"></i> Live Interactive Preview
                 </button>
                 <button class="btn btn-glass" onclick="closeModal()">
                     <i class="fas fa-times"></i> Close Preview
