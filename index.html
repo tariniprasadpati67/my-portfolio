@@ -76,10 +76,14 @@
             <!-- Theme & Sound Controls -->
             <div class="nav-controls">
                 <div class="theme-picker" id="theme-picker">
-                    <button class="theme-pill active" data-theme="violet" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4);" title="Cyber Violet"></button>
-                    <button class="theme-pill" data-theme="emerald" style="background: linear-gradient(135deg, #10b981, #06b6d4);" title="Emerald Matrix"></button>
-                    <button class="theme-pill" data-theme="ocean" style="background: linear-gradient(135deg, #0284c7, #6366f1);" title="Ocean Aurora"></button>
-                    <button class="theme-pill" data-theme="crimson" style="background: linear-gradient(135deg, #f43f5e, #f59e0b);" title="Crimson Sunset"></button>
+                    <button class="theme-pill active" data-theme="violet"
+                        style="background: linear-gradient(135deg, #8b5cf6, #06b6d4);" title="Cyber Violet"></button>
+                    <button class="theme-pill" data-theme="emerald"
+                        style="background: linear-gradient(135deg, #10b981, #06b6d4);" title="Emerald Matrix"></button>
+                    <button class="theme-pill" data-theme="ocean"
+                        style="background: linear-gradient(135deg, #0284c7, #6366f1);" title="Ocean Aurora"></button>
+                    <button class="theme-pill" data-theme="crimson"
+                        style="background: linear-gradient(135deg, #f43f5e, #f59e0b);" title="Crimson Sunset"></button>
                 </div>
                 <button class="sound-toggle-btn" id="sound-toggle" title="Toggle Sound FX">
                     <i class="fas fa-volume-up"></i>
@@ -125,7 +129,7 @@
             <div class="hero-avatar-wrapper tilt-card">
                 <div class="avatar-ring"></div>
                 <div class="avatar-card">
-                    <img src="image.png" alt="Tarini Prasad Pati" class="avatar-img">
+                    <img src="images/tarini_profile.webp" alt="Tarini Prasad Pati" class="avatar-img">
                 </div>
                 <!-- Floating Orbit Satellites -->
                 <div class="sat-badge sat-1"><i class="fab fa-html5" style="color: #e34f26;"></i> HTML5</div>
@@ -145,10 +149,18 @@
                 </div>
             </div>
             <div class="stat-card tilt-card">
+                <div class="stat-icon" style="color: var(--gold); background: rgba(245, 158, 11, 0.12);"><i
+                        class="fas fa-cogs"></i></div>
+                <div class="stat-info">
+                    <h3>5+</h3>
+                    <p>Mechanical Projects</p>
+                </div>
+            </div>
+            <div class="stat-card tilt-card">
                 <div class="stat-icon" style="color: var(--cyan); background: rgba(6, 182, 212, 0.12);"><i
                         class="fas fa-code-branch"></i></div>
                 <div class="stat-info">
-                    <h3>4+</h3>
+                    <h3>6+</h3>
                     <p>Core Technologies</p>
                 </div>
             </div>
@@ -175,7 +187,8 @@
             <div class="section-header">
                 <span class="section-tag"><i class="fas fa-user"></i> About Me</span>
                 <h2 class="section-title">My Journey &amp; Growth</h2>
-                <p class="section-desc">Blending analytical engineering discipline with modern web development
+                <p class="section-desc">Blending analytical Mechanical Engineering discipline with modern web
+                    development
                     creativity.</p>
             </div>
 
@@ -383,6 +396,7 @@
             <!-- Project Filter Buttons -->
             <div class="filter-bar" id="projects-filter">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="mechanical">Mechanical Projects</button>
                 <button class="filter-btn" data-filter="clones">Clones</button>
                 <button class="filter-btn" data-filter="apps">Web Apps</button>
                 <button class="filter-btn" data-filter="tools">Tools</button>
@@ -391,19 +405,143 @@
             <!-- Projects Grid -->
             <div class="projects-grid">
 
-                <!-- WhatsApp Clone -->
-                <div class="project-card" data-category="clones" onclick="openProjectModal('whatsapp')">
-                    <div class="project-badge"><i class="fab fa-whatsapp"></i> WhatsApp UI</div>
+                <!-- TRINETRA-TACTICAL (Bharat 2047) -->
+                <div class="project-card" data-category="mechanical" onclick="openProjectModal('trinetra_tactical')">
+                    <div class="project-badge"
+                        style="color: #00ffaa; border-color: rgba(0, 255, 170, 0.4); background: rgba(0, 255, 170, 0.12);">
+                        <i class="fas fa-shield-alt"></i> Defense Mechatronics (POC &lt; ₹2,500)
+                    </div>
+                    <img src="images/proj_trinetra.svg" alt="TRINETRA-TACTICAL Defense System"
+                        class="project-img-thumb" />
                     <h3 class="project-title">
-                        WhatsApp Web Clone
+                        TRINETRA-TACTICAL
                         <i class="fas fa-arrow-up-right-from-square"></i>
                     </h3>
-                    <p class="project-desc">Responsive WhatsApp Web clone with chat panel UI, contact search, message
-                        bubble layout, and dark theme polish.</p>
+                    <p class="project-desc">Next-Gen Passive Border Surveillance POC (Under ₹2,500 INR). Built with 3x
+                        ESP32 Mesh Nodes, Piezoelectric Sensors &amp; Flutter AR UI.</p>
+                    <div class="project-tags">
+                        <span class="tech-tag">ESP32 Mesh</span>
+                        <span class="tech-tag">Piezoelectric</span>
+                        <span class="tech-tag">Flutter AR</span>
+                    </div>
+                    <div class="project-link-text">
+                        Click to view details <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Hydraulic Disc Brake -->
+                <div class="project-card" data-category="mechanical" onclick="openProjectModal('hydraulic_brake')">
+                    <div class="project-badge"
+                        style="color: #f43f5e; border-color: rgba(244, 63, 94, 0.3); background: rgba(244, 63, 94, 0.12);">
+                        <i class="fas fa-car-side"></i> Automotive CAD
+                    </div>
+                    <img src="images/proj_hydraulic_brake.jpg" alt="Hydraulic Disc Brake &amp; FEA CAD Model"
+                        class="project-img-thumb" />
+                    <h3 class="project-title">
+                        Hydraulic Disc Brake &amp; FEA
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </h3>
+                    <p class="project-desc">3D CAD design and ANSYS thermal-stress analysis of automotive disc brake
+                        assembly under high-speed braking force.</p>
+                    <div class="project-tags">
+                        <span class="tech-tag">SolidWorks</span>
+                        <span class="tech-tag">ANSYS FEA</span>
+                        <span class="tech-tag">Hydraulics</span>
+                    </div>
+                    <div class="project-link-text">
+                        Click to view details <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Automated Conveyor Belt System -->
+                <div class="project-card" data-category="mechanical" onclick="openProjectModal('conveyor_system')">
+                    <div class="project-badge"
+                        style="color: var(--cyan); border-color: rgba(6, 182, 212, 0.3); background: rgba(6, 182, 212, 0.12);">
+                        <i class="fas fa-cogs"></i> Mechatronics &amp; CAD
+                    </div>
+                    <img src="images/proj_conveyor_system.jpg" alt="Automated Conveyor System CAD Model"
+                        class="project-img-thumb" />
+                    <h3 class="project-title">
+                        Automated Conveyor System
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </h3>
+                    <p class="project-desc">Industrial belt conveyor with pneumatic pick-and-place automation, motor
+                        torque sizing &amp; pneumatic circuit design.</p>
+                    <div class="project-tags">
+                        <span class="tech-tag">AutoCAD</span>
+                        <span class="tech-tag">Kinematics</span>
+                        <span class="tech-tag">Pneumatics</span>
+                    </div>
+                    <div class="project-link-text">
+                        Click to view details <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Solar Thermal Heat Exchanger -->
+                <div class="project-card" data-category="mechanical" onclick="openProjectModal('heat_exchanger')">
+                    <div class="project-badge"
+                        style="color: var(--gold); border-color: rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.3);">
+                        <i class="fas fa-fire-alt"></i> Thermal Engineering
+                    </div>
+                    <img src="images/proj_heat_exchanger.jpg" alt="Solar Heat Exchanger Design"
+                        class="project-img-thumb" />
+                    <h3 class="project-title">
+                        Solar Heat Exchanger Design
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </h3>
+                    <p class="project-desc">Thermal &amp; fluid flow design of shell and tube heat exchanger using LMTD
+                        and effectiveness-NTU thermodynamic methods.</p>
+                    <div class="project-tags">
+                        <span class="tech-tag">Thermodynamics</span>
+                        <span class="tech-tag">Heat Transfer</span>
+                        <span class="tech-tag">MATLAB</span>
+                    </div>
+                    <div class="project-link-text">
+                        Click to view details <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- 4-Stroke Crankshaft Kinematics -->
+                <div class="project-card" data-category="mechanical" onclick="openProjectModal('ic_engine')">
+                    <div class="project-badge"
+                        style="color: var(--emerald); border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.12);">
+                        <i class="fas fa-wrench"></i> IC Engine Dynamics
+                    </div>
+                    <img src="images/proj_ic_engine.jpg" alt="4-Stroke Crankshaft Kinematics"
+                        class="project-img-thumb" />
+                    <h3 class="project-title">
+                        4-Stroke Crankshaft Kinematics
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </h3>
+                    <p class="project-desc">Kinematic force analysis, dynamic counterweight balancing, and SolidWorks
+                        motion simulation of IC engine crankshaft.</p>
+                    <div class="project-tags">
+                        <span class="tech-tag">SolidWorks</span>
+                        <span class="tech-tag">Theory of Machines</span>
+                        <span class="tech-tag">Dynamics</span>
+                    </div>
+                    <div class="project-link-text">
+                        Click to view details <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Unique Chat -->
+                <div class="project-card" data-category="webapps" onclick="openProjectModal('whatsapp')">
+                    <div class="project-badge"
+                        style="color: #00ffaa; border-color: rgba(0, 255, 170, 0.3); background: rgba(0, 255, 170, 0.12);">
+                        <i class="fas fa-comments"></i> Unique Chat UI</div>
+                    <img src="images/proj_unique_chat.jpg" alt="Unique Chat App" class="project-img-thumb" />
+                    <h3 class="project-title">
+                        Unique Chat
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </h3>
+                    <p class="project-desc">Real-time dual-panel chat interface featuring Tarini &amp; Ashika chat
+                        views, AI assistant prompt bar, custom dark theme &amp; quick media controls.</p>
                     <div class="project-tags">
                         <span class="tech-tag">HTML5</span>
                         <span class="tech-tag">CSS3</span>
                         <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">AI Chat UI</span>
                     </div>
                     <div class="project-link-text">
                         Click to view details <i class="fas fa-chevron-right"></i>
@@ -416,6 +554,7 @@
                         style="color: #1db954; border-color: rgba(29, 185, 84, 0.3); background: rgba(29, 185, 84, 0.12);">
                         <i class="fab fa-spotify"></i> Music Player
                     </div>
+                    <img src="images/proj_spotify.jpg" alt="Spotify Web Clone" class="project-img-thumb" />
                     <h3 class="project-title">
                         Spotify Web Clone
                         <i class="fas fa-arrow-up-right-from-square"></i>
@@ -438,6 +577,7 @@
                         style="color: var(--cyan); border-color: rgba(6, 182, 212, 0.3); background: rgba(6, 182, 212, 0.12);">
                         <i class="fas fa-id-card"></i> Personal UI
                     </div>
+                    <img src="images/proj_portfolio.jpg" alt="Glassmorphism Portfolio" class="project-img-thumb" />
                     <h3 class="project-title">
                         Glassmorphism Portfolio
                         <i class="fas fa-arrow-up-right-from-square"></i>
@@ -460,6 +600,7 @@
                         style="color: var(--gold); border-color: rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.12);">
                         <i class="fas fa-calculator"></i> Interactive Tool
                     </div>
+                    <img src="images/proj_calculator.jpg" alt="Smart Glass Calculator" class="project-img-thumb" />
                     <h3 class="project-title">
                         Smart Glass Calculator
                         <i class="fas fa-arrow-up-right-from-square"></i>
@@ -482,6 +623,7 @@
                         style="color: var(--pink); border-color: rgba(236, 72, 153, 0.3); background: rgba(236, 72, 153, 0.12);">
                         <i class="fas fa-sign-in-alt"></i> Auth UI
                     </div>
+                    <img src="images/proj_login.jpg" alt="Glassmorphic Login Portal" class="project-img-thumb" />
                     <h3 class="project-title">
                         Glassmorphic Login Portal
                         <i class="fas fa-arrow-up-right-from-square"></i>
@@ -504,6 +646,7 @@
                         style="color: var(--emerald); border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.12);">
                         <i class="fas fa-tasks"></i> Productivity
                     </div>
+                    <img src="images/proj_todo.jpg" alt="Smart To-Do List App" class="project-img-thumb" />
                     <h3 class="project-title">
                         Smart To-Do List App
                         <i class="fas fa-arrow-up-right-from-square"></i>
@@ -528,7 +671,8 @@
             <div class="section-header">
                 <span class="section-tag"><i class="fas fa-paper-plane"></i> Get In Touch</span>
                 <h2 class="section-title">Let's Connect</h2>
-                <p class="section-desc">Have a project in mind or want to connect? Send a message below or reach out directly!</p>
+                <p class="section-desc">Have a project in mind or want to connect? Send a message below or reach out
+                    directly!</p>
             </div>
 
             <div class="contact-grid">
@@ -584,17 +728,21 @@
                     <form id="contact-form" class="glass-form">
                         <div class="form-group">
                             <label for="contact-name">Your Name</label>
-                            <input type="text" id="contact-name" class="form-input" placeholder="e.g. Rahul Sharma" required />
+                            <input type="text" id="contact-name" class="form-input" placeholder="e.g. Rahul Sharma"
+                                required />
                         </div>
                         <div class="form-group">
                             <label for="contact-email">Email Address</label>
-                            <input type="email" id="contact-email" class="form-input" placeholder="e.g. rahul@example.com" required />
+                            <input type="email" id="contact-email" class="form-input"
+                                placeholder="e.g. rahul@example.com" required />
                         </div>
                         <div class="form-group">
                             <label for="contact-message">Message</label>
-                            <textarea id="contact-message" class="form-input" placeholder="Hi Tarini, let me know if you're available for..." required></textarea>
+                            <textarea id="contact-message" class="form-input"
+                                placeholder="Hi Tarini, let me know if you're available for..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
+                        <button type="submit" class="btn btn-primary"
+                            style="width: 100%; justify-content: center; margin-top: 0.5rem;">
                             <i class="fas fa-paper-plane"></i> Send Message
                         </button>
                     </form>
@@ -618,26 +766,31 @@
     <div class="modal-overlay" id="project-modal">
         <div class="modal-content">
             <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
-            <i id="modal-icon" class="fas fa-code modal-header-icon"></i>
-            <h3 class="modal-title" id="modal-title">Project Title</h3>
-            <p id="modal-desc" style="color: var(--text-body); font-size: 0.98rem; line-height: 1.6;">Project
+            <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.3rem;">
+                <i id="modal-icon" class="fas fa-code modal-header-icon"
+                    style="font-size: 1.5rem; margin-bottom: 0;"></i>
+                <h3 class="modal-title" id="modal-title" style="font-size: 1.3rem; margin-bottom: 0;">Project Title</h3>
+            </div>
+            <p id="modal-desc"
+                style="color: var(--text-body); font-size: 0.86rem; line-height: 1.45; margin-bottom: 0.4rem;">Project
                 Description</p>
 
-            <div id="modal-tags" class="project-tags" style="margin-top: 1rem;"></div>
+            <div id="modal-tags" class="project-tags" style="margin-top: 0.3rem; margin-bottom: 0.4rem;"></div>
 
-            <h4 style="font-size: 1.05rem; color: var(--text-heading); margin-top: 1.5rem;">Key Features &amp;
+            <h4 style="font-size: 0.92rem; color: var(--text-heading); margin-top: 0.5rem; margin-bottom: 0.3rem;">Key
+                Features &amp;
                 Highlights</h4>
             <ul id="modal-features" class="modal-features"></ul>
 
             <!-- Live Simulator Container -->
             <div id="modal-simulator" class="modal-simulator"></div>
 
-            <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
-                <button class="btn btn-primary" id="modal-demo-btn"
+            <div style="display: flex; gap: 0.8rem; margin-top: 0.8rem; flex-wrap: wrap;">
+                <button class="btn btn-primary" id="modal-demo-btn" style="padding: 0.4rem 1rem; font-size: 0.82rem;"
                     onclick="showToast('Live Interactive Simulator running above!', 'fas fa-play-circle')">
                     <i class="fas fa-external-link-alt"></i> Live Interactive Preview
                 </button>
-                <button class="btn btn-glass" onclick="closeModal()">
+                <button class="btn btn-glass" style="padding: 0.4rem 1rem; font-size: 0.82rem;" onclick="closeModal()">
                     <i class="fas fa-times"></i> Close Preview
                 </button>
             </div>
