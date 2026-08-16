@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initAudioSynth();
     initThemePicker();
     init3DTiltCards();
-    initDeveloperTerminal();
     initConfettiCanvas();
 });
 
