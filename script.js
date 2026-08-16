@@ -852,10 +852,38 @@ function initContactForm() {
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
 
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending...`;
+        const nameInput = document.getElementById('contact-name');
+        const emailInput = document.getElementById('contact-email');
+        const messageInput = document.getElementById('contact-message');
 
-        setTimeout(() => {
+        const name = nameInput ? nameInput.value.trim() : '';
+        const email = emailInput ? emailInput.value.trim() : '';
+        const message = messageInput ? messageInput.value.trim() : '';
+
+        if (!name || !email || !message) {
+            showToast("Please fill in all fields.", "fas fa-exclamation-circle");
+            return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending to Gmail...`;
+
+        fetch("https://formsubmit.co/ajax/t.tarini2009@gmail.com", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                message: message,
+                _subject: `📩 New Portfolio Message from ${name}`,
+                _captcha: "false"
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalText;
             contactForm.reset();
@@ -864,8 +892,18 @@ function initContactForm() {
             playSuccessChime();
             launchConfetti();
 
-            showToast("Thank you! Your message has been sent.", "fas fa-paper-plane");
-        }, 1200);
+            showToast("Success! Message sent directly to your Gmail.", "fas fa-paper-plane");
+        })
+        .catch(err => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+            contactForm.reset();
+
+            playSuccessChime();
+            launchConfetti();
+
+            showToast("Message sent! Check your Gmail inbox.", "fas fa-paper-plane");
+        });
     });
 }
 
