@@ -222,6 +222,71 @@ function initSkillsFilter() {
 
 /* ---------- 6. PROJECTS FILTER & MODAL DATA ---------- */
 const projectData = {
+    trinetra_tactical: {
+        title: "TRINETRA-TACTICAL (Innovation Mission - Bharat 2047)",
+        icon: "fas fa-shield-alt",
+        category: "Defense Mechatronics",
+        tags: ["Defense Mechatronics", "Passive Radar", "Stealth Sensors", "Bharat 2047"],
+        desc: "Next-Generation Passive Border Surveillance & Tactical Mechatronics System designed for Viksit Bharat @ 2047. Features stealth high-altitude sensors, passive RF/thermal scanning, and real-time autonomous border threat detection.",
+        features: [
+            "Passive non-emitting radar detection for zero stealth signature",
+            "High-altitude automated thermal-optical sensor tracking pods",
+            "Real-time tactical telemetry & border threat telemetry dashboard",
+            "Aligned with Innovation Mission - Viksit Bharat 2047 defense initiative"
+        ]
+    },
+    hydraulic_brake: {
+        title: "Hydraulic Disc Brake System & FEA Analysis",
+        icon: "fas fa-car-side",
+        category: "Mechanical CAD",
+        tags: ["SolidWorks", "ANSYS FEA", "Hydraulics", "CAD Modeling"],
+        desc: "3D CAD modeling and finite element thermal-stress analysis of an automotive ventilated disc brake caliper assembly under emergency braking loads.",
+        features: [
+            "Complete 3D CAD modeling of rotor disc & dual-piston caliper",
+            "ANSYS Finite Element Analysis (FEA) under emergency braking loads",
+            "Thermal dissipation simulation to prevent brake fade & rotor warping",
+            "Pascal's law hydraulic pressure & master cylinder force calculations"
+        ]
+    },
+    conveyor_system: {
+        title: "Automated Conveyor & Pick-and-Place System",
+        icon: "fas fa-cogs",
+        category: "Mechatronics",
+        tags: ["AutoCAD", "Kinematics", "Pneumatics", "PLC Automation"],
+        desc: "Design and kinematic optimization of an industrial belt conveyor integrated with pneumatic pick-and-place robotic grippers for high-speed assembly lines.",
+        features: [
+            "Kinematic chain calculations for belt speed, tension & motor torque",
+            "Pneumatic cylinder sizing & directional valve layout",
+            "AutoCAD 2D mechanical drafting & assembly exploded views",
+            "Sensor placement for automated material detection & sorting"
+        ]
+    },
+    heat_exchanger: {
+        title: "Shell & Tube Solar Heat Exchanger",
+        icon: "fas fa-fire-alt",
+        category: "Thermal Eng",
+        tags: ["Thermodynamics", "Heat Transfer", "MATLAB", "SolidWorks"],
+        desc: "Thermal and structural design of a high-efficiency shell-and-tube heat exchanger for solar hot water storage systems, utilizing counter-flow heat transfer.",
+        features: [
+            "Logarithmic Mean Temperature Difference (LMTD) calculations",
+            "Tube pitch & baffle spacing optimization for maximum effectiveness",
+            "Overall heat transfer coefficient (U-value) thermal modeling",
+            "Pressure drop analysis across tube side and shell side fluid channels"
+        ]
+    },
+    ic_engine: {
+        title: "4-Stroke IC Engine Crankshaft Kinematics",
+        icon: "fas fa-wrench",
+        category: "Mechanical CAD",
+        tags: ["Theory of Machines", "SolidWorks", "Dynamics", "CAD-CAM"],
+        desc: "Dynamic force balance and CAD kinematic animation of a 4-stroke single cylinder internal combustion engine crankshaft, piston, and connecting rod assembly.",
+        features: [
+            "Piston displacement, velocity & acceleration equation plotting",
+            "Dynamic counterweight balancing to eliminate primary engine vibrations",
+            "Connecting rod inertia & gas pressure force analysis",
+            "SolidWorks motion simulation and stress analysis at top dead center (TDC)"
+        ]
+    },
     spotify: {
         title: "Spotify Web Music Clone",
         icon: "fab fa-spotify",
@@ -236,16 +301,16 @@ const projectData = {
         ]
     },
     whatsapp: {
-        title: "WhatsApp Web Clone",
-        icon: "fab fa-whatsapp",
-        category: "Clones",
-        tags: ["HTML5", "CSS3", "JavaScript"],
-        desc: "Interactive WhatsApp Web user interface featuring chat list, real-time message bubble layout, contact search bar, responsive chat pane, and dark mode UI polish.",
+        title: "Unique Chat Application",
+        icon: "fas fa-comments",
+        category: "Web Apps",
+        tags: ["HTML5", "CSS3", "JavaScript", "AI Chat UI"],
+        desc: "Real-time dual-panel chat interface featuring Tarini & Ashika chat views, AI assistant prompt bar, custom dark theme & quick media controls.",
         features: [
-            "Authentic WhatsApp Web chat panel layout",
-            "Interactive chat item selection with chat area swap",
-            "Message bubble rendering with timestamp indicators",
-            "Responsive layout for mobile and desktop screens"
+            "Dual-panel interactive Tarini & Ashika conversation layout",
+            "AI Assistant prompt integration bar",
+            "Emoji & quick media action toolbar",
+            "Custom neon dark-mode UI styling"
         ]
     },
     portfolio: {
@@ -387,20 +452,26 @@ function closeModal() {
 function renderSimulatorHTML(key) {
     if (key === 'whatsapp') {
         return `
-            <div class="sim-header-title"><i class="fab fa-whatsapp" style="color: #25d366;"></i> Live WhatsApp Chat Simulator</div>
+            <div style="margin-bottom: 0.6rem; border-radius: 10px; overflow: hidden; border: 1px solid rgba(0,255,170,0.3); background: rgba(0,0,0,0.4);">
+                <img src="images/proj_unique_chat.jpg" alt="Unique Chat UI" style="width: 100%; max-height: 160px; object-fit: contain; display: block; margin: 0 auto;" />
+            </div>
+            <div class="sim-header-title" style="color: #00ffaa;"><i class="fas fa-comments"></i> Live Unique Chat Simulator</div>
             <div class="sim-whatsapp-box">
                 <div class="sim-chat-logs" id="sim-chat-logs">
-                    <div class="msg-bubble msg-incoming">Hi Tarini! Loved your portfolio projects. Are you open for web work?</div>
-                    <div class="msg-bubble msg-outgoing">Hello! Yes, I am actively available for web development work & collaboration!</div>
+                    <div class="msg-bubble msg-incoming">Hi Tarini &amp; Ashika! Loved your Unique Chat UI layout.</div>
+                    <div class="msg-bubble msg-outgoing">Hello! Dual-panel real-time chat with AI assistant prompt bar is live!</div>
                 </div>
                 <div class="sim-chat-input-row">
-                    <input type="text" id="sim-wa-input" class="form-input" placeholder="Type a message to Tarini..." style="padding: 0.5rem 0.8rem; font-size: 0.85rem;" />
+                    <input type="text" id="sim-wa-input" class="form-input" placeholder="Type a message in Unique Chat..." style="padding: 0.5rem 0.8rem; font-size: 0.85rem;" />
                     <button class="btn btn-primary" id="sim-wa-send" style="padding: 0.5rem 1rem; font-size: 0.85rem;"><i class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
         `;
     } else if (key === 'spotify') {
         return `
+            <div style="margin-bottom: 0.6rem; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); background: rgba(0,0,0,0.4);">
+                <img src="images/proj_spotify.jpg" alt="Spotify Player UI" style="width: 100%; max-height: 150px; object-fit: contain; display: block; margin: 0 auto;" />
+            </div>
             <div class="sim-header-title"><i class="fab fa-spotify" style="color: #1db954;"></i> Live Spotify Audio Visualizer</div>
             <div class="sim-spotify-widget">
                 <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.05); padding: 0.8rem; border-radius: var(--radius-md);">
@@ -422,6 +493,9 @@ function renderSimulatorHTML(key) {
         `;
     } else if (key === 'calculator') {
         return `
+            <div style="margin-bottom: 0.6rem; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); background: rgba(0,0,0,0.4);">
+                <img src="images/proj_calculator.jpg" alt="Calculator UI" style="width: 100%; max-height: 150px; object-fit: contain; display: block; margin: 0 auto;" />
+            </div>
             <div class="sim-header-title"><i class="fas fa-calculator" style="color: var(--gold);"></i> Live Glass Calculator Simulator</div>
             <div class="sim-calc-grid">
                 <div class="sim-calc-display" id="sim-calc-disp">0</div>
@@ -450,6 +524,9 @@ function renderSimulatorHTML(key) {
         `;
     } else if (key === 'todo') {
         return `
+            <div style="margin-bottom: 0.6rem; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); background: rgba(0,0,0,0.4);">
+                <img src="images/proj_todo.jpg" alt="To-Do App UI" style="width: 100%; max-height: 150px; object-fit: contain; display: block; margin: 0 auto;" />
+            </div>
             <div class="sim-header-title"><i class="fas fa-tasks" style="color: var(--emerald);"></i> Live To-Do List Simulator</div>
             <div class="sim-todo-list">
                 <div class="sim-todo-item"><span>⚡ Build modern glassmorphic web app</span> <input type="checkbox" checked /></div>
@@ -459,6 +536,9 @@ function renderSimulatorHTML(key) {
         `;
     } else if (key === 'login') {
         return `
+            <div style="margin-bottom: 0.6rem; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); background: rgba(0,0,0,0.4);">
+                <img src="images/proj_login.jpg" alt="Login Portal UI" style="width: 100%; max-height: 150px; object-fit: contain; display: block; margin: 0 auto;" />
+            </div>
             <div class="sim-header-title"><i class="fas fa-lock" style="color: var(--pink);"></i> Live Login Authentication Simulator</div>
             <div style="display: flex; flex-direction: column; gap: 0.8rem;">
                 <input type="text" class="form-input" value="developer@tarini.com" readonly style="font-size: 0.85rem;" />
@@ -469,8 +549,112 @@ function renderSimulatorHTML(key) {
                 <button class="btn btn-primary" onclick="showToast('Authentication Successful!', 'fas fa-check-circle')" style="padding: 0.5rem; justify-content: center; font-size: 0.85rem;"><i class="fas fa-sign-in-alt"></i> Test Login</button>
             </div>
         `;
+    } else if (key === 'hydraulic_brake') {
+        return `
+            <div style="margin-bottom: 0.6rem; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); background: rgba(0,0,0,0.4);">
+                <img src="images/proj_hydraulic_brake.jpg" alt="Hydraulic Disc Brake CAD" style="width: 100%; max-height: 160px; object-fit: contain; display: block; margin: 0 auto;" />
+            </div>
+            <div class="sim-header-title"><i class="fas fa-car-side" style="color: #f43f5e;"></i> Interactive Hydraulic Brake Force Simulator</div>
+            <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-md); font-size: 0.85rem; color: #fff;">
+                <div style="margin-bottom: 0.8rem;">
+                    <label>Pedal Force (N): <span id="brake-pedal-val" style="color: var(--cyan); font-weight: 600;">300 N</span></label>
+                    <input type="range" id="brake-slider" min="100" max="800" value="300" style="width: 100%; margin-top: 0.3rem;" />
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 8px;">
+                    <div>Fluid Pressure: <br><strong id="brake-press" style="color: var(--gold); font-size: 1.1rem;">38.2 Bar</strong></div>
+                    <div>Braking Torque: <br><strong id="brake-torque" style="color: var(--emerald); font-size: 1.1rem;">485 Nm</strong></div>
+                </div>
+            </div>
+        `;
+    } else if (key === 'conveyor_system') {
+        return `
+            <div style="margin-bottom: 0.6rem; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); background: rgba(0,0,0,0.4);">
+                <img src="images/proj_conveyor_system.jpg" alt="Conveyor System CAD" style="width: 100%; max-height: 160px; object-fit: contain; display: block; margin: 0 auto;" />
+            </div>
+            <div class="sim-header-title"><i class="fas fa-cogs" style="color: var(--cyan);"></i> Conveyor Belt Power &amp; Torque Estimator</div>
+            <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-md); font-size: 0.85rem; color: #fff;">
+                <div style="margin-bottom: 0.8rem;">
+                    <label>Conveyor Belt Load (kg): <span id="conveyor-load-val" style="color: var(--cyan); font-weight: 600;">150 kg</span></label>
+                    <input type="range" id="conveyor-slider" min="50" max="500" value="150" style="width: 100%; margin-top: 0.3rem;" />
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 8px;">
+                    <div>Motor Torque: <br><strong id="conveyor-torque" style="color: var(--gold); font-size: 1.1rem;">22.5 Nm</strong></div>
+                    <div>Required Power: <br><strong id="conveyor-power" style="color: var(--emerald); font-size: 1.1rem;">1.85 kW</strong></div>
+                </div>
+            </div>
+        `;
+    } else if (key === 'heat_exchanger') {
+        return `
+            <div style="margin-bottom: 0.6rem; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); background: rgba(0,0,0,0.4);">
+                <img src="images/proj_heat_exchanger.jpg" alt="Solar Heat Exchanger CAD" style="width: 100%; max-height: 160px; object-fit: contain; display: block; margin: 0 auto;" />
+            </div>
+            <div class="sim-header-title"><i class="fas fa-fire-alt" style="color: var(--gold);"></i> Solar Heat Exchanger Thermal Estimator</div>
+            <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-md); font-size: 0.85rem; color: #fff;">
+                <div style="margin-bottom: 0.8rem;">
+                    <label>Solar Heat Input (kW): <span id="heat-input-val" style="color: var(--gold); font-weight: 600;">25 kW</span></label>
+                    <input type="range" id="heat-slider" min="5" max="60" value="25" style="width: 100%; margin-top: 0.3rem;" />
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 8px;">
+                    <div>Water Temp Out: <br><strong id="heat-out-temp" style="color: #f43f5e; font-size: 1.1rem;">68.5 °C</strong></div>
+                    <div>Thermal Efficiency: <br><strong style="color: var(--emerald); font-size: 1.1rem;">92.4 %</strong></div>
+                </div>
+            </div>
+        `;
+    } else if (key === 'ic_engine') {
+        return `
+            <div style="margin-bottom: 0.6rem; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); background: rgba(0,0,0,0.4);">
+                <img src="images/proj_ic_engine.jpg" alt="4-Stroke IC Engine CAD" style="width: 100%; max-height: 160px; object-fit: contain; display: block; margin: 0 auto;" />
+            </div>
+            <div class="sim-header-title"><i class="fas fa-wrench" style="color: var(--emerald);"></i> IC Engine RPM &amp; Power Simulator</div>
+            <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-md); font-size: 0.85rem; color: #fff;">
+                <div style="margin-bottom: 0.8rem;">
+                    <label>Engine Speed (RPM): <span id="engine-rpm-val" style="color: var(--emerald); font-weight: 600;">3500 RPM</span></label>
+                    <input type="range" id="engine-slider" min="1000" max="7000" value="3500" style="width: 100%; margin-top: 0.3rem;" />
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 8px;">
+                    <div>Piston Velocity: <br><strong id="engine-vel" style="color: var(--cyan); font-size: 1.1rem;">11.6 m/s</strong></div>
+                    <div>Engine Output: <br><strong id="engine-bhp" style="color: var(--gold); font-size: 1.1rem;">42.8 BHP</strong></div>
+                </div>
+            </div>
+        `;
+    } else if (key === 'trinetra_tactical') {
+        return `
+            <div style="margin-bottom: 0.6rem; border-radius: 10px; overflow: hidden; border: 1px solid rgba(0,255,170,0.3); background: #02140a;">
+                <img src="images/proj_trinetra.svg" alt="TRINETRA-TACTICAL HUD" style="width: 100%; max-height: 160px; object-fit: contain; display: block;" />
+            </div>
+            <div class="sim-header-title" style="color: #00ffaa;"><i class="fas fa-microchip"></i> PROOF-OF-CONCEPT (POC) HARDWARE ARCHITECTURE</div>
+            
+            <div style="background: rgba(0,255,170,0.05); border: 1px solid rgba(0,255,170,0.25); padding: 1.2rem; border-radius: var(--radius-md); font-size: 0.9rem; color: #fff;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(0,255,170,0.2);">
+                    <span style="color: #00ffaa; font-weight: 700; letter-spacing: 1px;">TOTAL PROTOTYPE BUDGET</span>
+                    <strong style="color: var(--gold); background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem;">UNDER ₹2,500 INR</strong>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+                    <div style="display: flex; justify-content: space-between; background: rgba(0,0,0,0.3); padding: 0.6rem 0.8rem; border-radius: 6px; border-left: 3px solid #00ffaa;">
+                        <span><strong style="color: #00ffaa;">ESP32 Nodes (x3)</strong></span>
+                        <span style="color: var(--text-muted);">Mesh &amp; Sensing</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; background: rgba(0,0,0,0.3); padding: 0.6rem 0.8rem; border-radius: 6px; border-left: 3px solid var(--cyan);">
+                        <span><strong style="color: var(--cyan);">Piezoelectric Units</strong></span>
+                        <span style="color: var(--text-muted);">Passive Detection</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; background: rgba(0,0,0,0.3); padding: 0.6rem 0.8rem; border-radius: 6px; border-left: 3px solid var(--emerald);">
+                        <span><strong style="color: var(--emerald);">Li-Po Battery</strong></span>
+                        <span style="color: var(--text-muted);">Field Power</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; background: rgba(0,0,0,0.3); padding: 0.6rem 0.8rem; border-radius: 6px; border-left: 3px solid var(--pink);">
+                        <span><strong style="color: var(--pink);">Flutter UI</strong></span>
+                        <span style="color: var(--text-muted);">AR Dashboard</span>
+                    </div>
+                </div>
+            </div>
+        `;
     } else {
         return `
+            <div style="margin-bottom: 1rem; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+                <img src="images/proj_portfolio.jpg" alt="Portfolio Spec" style="width: 100%; max-height: 200px; object-fit: cover; display: block;" />
+            </div>
             <div class="sim-header-title"><i class="fas fa-code-branch" style="color: var(--cyan);"></i> Live Architecture Specs</div>
             <p style="font-size: 0.85rem; color: var(--text-light);">Clean HTML5 semantic structure, modular CSS variables theme palette, ES6 Vanilla JS engine, zero bloat, ultra fast performance.</p>
         `;
@@ -551,18 +735,75 @@ function bindSimulatorEvents(key) {
             });
         });
     } else if (key === 'login') {
-        const toggle = document.getElementById('sim-pass-toggle');
+        const passToggle = document.getElementById('sim-pass-toggle');
         const passInput = document.getElementById('sim-pass');
-        if (toggle && passInput) {
-            toggle.addEventListener('click', () => {
-                playSynthSound(450, 0.03, 'sine');
-                if (passInput.type === 'password') {
-                    passInput.type = 'text';
-                    toggle.innerHTML = '<i class="fas fa-eye-slash"></i>';
-                } else {
-                    passInput.type = 'password';
-                    toggle.innerHTML = '<i class="fas fa-eye"></i>';
-                }
+        if (passToggle && passInput) {
+            passToggle.addEventListener('click', () => {
+                const isPass = passInput.type === 'password';
+                passInput.type = isPass ? 'text' : 'password';
+                passToggle.innerHTML = isPass ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
+                playSynthSound(600, 0.04, 'sine');
+            });
+        }
+    } else if (key === 'hydraulic_brake') {
+        const slider = document.getElementById('brake-slider');
+        const valTxt = document.getElementById('brake-pedal-val');
+        const pressTxt = document.getElementById('brake-press');
+        const torqueTxt = document.getElementById('brake-torque');
+        if (slider) {
+            slider.addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                valTxt.textContent = `${val} N`;
+                pressTxt.textContent = `${(val * 0.127).toFixed(1)} Bar`;
+                torqueTxt.textContent = `${(val * 1.616).toFixed(0)} Nm`;
+            });
+        }
+    } else if (key === 'conveyor_system') {
+        const slider = document.getElementById('conveyor-slider');
+        const loadTxt = document.getElementById('conveyor-load-val');
+        const torqueTxt = document.getElementById('conveyor-torque');
+        const powerTxt = document.getElementById('conveyor-power');
+        if (slider) {
+            slider.addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                loadTxt.textContent = `${val} kg`;
+                torqueTxt.textContent = `${(val * 0.15).toFixed(1)} Nm`;
+                powerTxt.textContent = `${(val * 0.0123).toFixed(2)} kW`;
+            });
+        }
+    } else if (key === 'heat_exchanger') {
+        const slider = document.getElementById('heat-slider');
+        const valTxt = document.getElementById('heat-input-val');
+        const tempTxt = document.getElementById('heat-out-temp');
+        if (slider) {
+            slider.addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                valTxt.textContent = `${val} kW`;
+                tempTxt.textContent = `${(30 + val * 1.54).toFixed(1)} °C`;
+            });
+        }
+    } else if (key === 'ic_engine') {
+        const slider = document.getElementById('engine-slider');
+        const rpmTxt = document.getElementById('engine-rpm-val');
+        const velTxt = document.getElementById('engine-vel');
+        const bhpTxt = document.getElementById('engine-bhp');
+        if (slider) {
+            slider.addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                rpmTxt.textContent = `${val} RPM`;
+                velTxt.textContent = `${(val * 0.0033).toFixed(1)} m/s`;
+                bhpTxt.textContent = `${(val * 0.0122).toFixed(1)} BHP`;
+            });
+        }
+    } else if (key === 'trinetra_tactical') {
+        const slider = document.getElementById('tri-slider');
+        const altTxt = document.getElementById('tri-alt-val');
+        const covTxt = document.getElementById('tri-coverage');
+        if (slider) {
+            slider.addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                altTxt.textContent = `${val} M`;
+                covTxt.textContent = `${(val * 0.0495).toFixed(1)} KM`;
             });
         }
     }
