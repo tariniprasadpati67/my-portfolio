@@ -2,7 +2,7 @@
    TARINI PRASAD PATI - PORTFOLIO INTERACTIVE & VISUAL ENGINE (v2.5)
    ========================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+function startPortfolioApp() {
     initIntroLoader();
     initParticleCanvas();
     initTypewriter();
@@ -21,12 +21,28 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemePicker();
     init3DTiltCards();
     initConfettiCanvas();
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startPortfolioApp);
+} else {
+    // If DOM is already interactive/complete on mobile
+    startPortfolioApp();
+}
 
 /* ---------- 0. MODERN INTRO LOADER ENGINE ---------- */
 function initIntroLoader() {
     const loader = document.getElementById('intro-loader');
     if (!loader) return;
+
+    // Safety fallback: guaranteed exit after 4.5s even if mobile browser pauses animation in background
+    setTimeout(() => {
+        if (loader && loader.style.display !== 'none' && !loader.classList.contains('intro-exit')) {
+            loader.classList.add('intro-exit');
+            document.body.classList.remove('intro-active');
+            setTimeout(() => { loader.style.display = 'none'; }, 900);
+        }
+    }, 4500);
 
     const percentEl = document.getElementById('intro-percent');
     const progressBar = document.getElementById('intro-progress-bar');

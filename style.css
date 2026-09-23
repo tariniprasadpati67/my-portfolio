@@ -2008,6 +2008,8 @@ textarea.form-input {
 body.intro-active {
     overflow: hidden !important;
     height: 100vh;
+    height: 100dvh;
+    touch-action: none;
 }
 
 .intro-loader {
@@ -2015,7 +2017,9 @@ body.intro-active {
     top: 0;
     left: 0;
     width: 100vw;
+    width: 100%;
     height: 100vh;
+    height: 100dvh;
     background: #070a13;
     z-index: 999999;
     display: flex;
