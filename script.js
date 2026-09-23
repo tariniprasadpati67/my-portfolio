@@ -16,6 +16,7 @@ function startPortfolioApp() {
     initScrollAnimations();
 
     // New Advanced Features v2.5
+    initRoyalBackgroundInteraction();
     initCustomCursor();
     initAudioSynth();
     initThemePicker();
@@ -35,14 +36,14 @@ function initIntroLoader() {
     const loader = document.getElementById('intro-loader');
     if (!loader) return;
 
-    // Safety fallback: guaranteed exit after 4.5s even if mobile browser pauses animation in background
+    // Safety fallback: guaranteed exit after 8s even if browser pauses animation in background
     setTimeout(() => {
         if (loader && loader.style.display !== 'none' && !loader.classList.contains('intro-exit')) {
             loader.classList.add('intro-exit');
             document.body.classList.remove('intro-active');
             setTimeout(() => { loader.style.display = 'none'; }, 900);
         }
-    }, 4500);
+    }, 8000);
 
     const percentEl = document.getElementById('intro-percent');
     const progressBar = document.getElementById('intro-progress-bar');
@@ -61,7 +62,7 @@ function initIntroLoader() {
     document.body.classList.add('intro-active');
 
     // Smooth percentage counter using requestAnimationFrame
-    const duration = 1250; // 1.25s for fast & snappy animation
+    const duration = 1200; // 1.2s for snappy percentage counter
     const startTime = performance.now();
 
     function easeOutCubic(t) {
@@ -90,52 +91,70 @@ function initIntroLoader() {
             if (percentEl) percentEl.textContent = '100';
             if (progressBar) progressBar.style.strokeDashoffset = '0';
 
-            // Transition to "Hello" greeting
+            // Transition from Percentage to "Hello" greeting
             setTimeout(() => {
                 if (stageProgress) stageProgress.classList.add('fade-out');
-                if (stageGreeting) stageGreeting.classList.add('active');
+                if (stageGreeting) {
+                    stageGreeting.classList.add('active');
+                    stageGreeting.setAttribute('aria-hidden', 'false');
+                }
 
                 const typedEl = document.getElementById('intro-typed-text');
+                const penNib = document.getElementById('intro-pen-nib');
                 const dotEl = document.getElementById('intro-accent-dot');
-                const cursorEl = document.getElementById('intro-type-cursor');
                 const subEl = document.getElementById('intro-greeting-sub');
+                const swashLeft = document.querySelector('.swash-left');
+                const swashRight = document.querySelector('.swash-right');
 
-                const greetingWord = 'Hello';
+                // 1. Reveal left entrance flourish and pen nib
+                if (swashLeft) swashLeft.classList.add('visible');
+                if (penNib) penNib.classList.add('active');
+
+                // 2. Type "hello" letter by letter
+                const word = 'hello';
                 let charIndex = 0;
-                const typingSpeed = 140; // Smooth, deliberate letter-by-letter speed
+                const typingInterval = 190; // 190ms per letter: realistic cursive handwriting rhythm
+
+                if (typedEl) typedEl.textContent = '';
 
                 function typeNextLetter() {
-                    if (charIndex < greetingWord.length) {
+                    if (charIndex < word.length) {
                         if (typedEl) {
-                            typedEl.textContent += greetingWord.charAt(charIndex);
+                            typedEl.textContent += word.charAt(charIndex);
                         }
                         charIndex++;
-                        setTimeout(typeNextLetter, typingSpeed);
+                        setTimeout(typeNextLetter, typingInterval);
                     } else {
-                        // Finished typing "Hello"
+                        // All letters written!
+                        // Hide pen nib smoothly
+                        if (penNib) penNib.classList.remove('active');
+
+                        // 3. Reveal right exit flourish
                         setTimeout(() => {
-                            // Reveal glowing accent dot and subtext
+                            if (swashRight) swashRight.classList.add('visible');
+                        }, 130);
+
+                        // 4. Reveal glowing amber accent dot & subtext
+                        setTimeout(() => {
                             if (dotEl) dotEl.classList.add('visible');
-                            if (cursorEl) cursorEl.style.display = 'none';
                             if (subEl) subEl.classList.add('visible');
+                        }, 280);
 
-                            // Comfortable reading pause before revealing homepage
+                        // 5. Reading pause: hold completed "hello" for 1.8s
+                        setTimeout(() => {
+                            loader.classList.add('intro-exit');
+                            document.body.classList.remove('intro-active');
+
                             setTimeout(() => {
-                                loader.classList.add('intro-exit');
-                                document.body.classList.remove('intro-active');
-
-                                // Clean up and disable loader after transition completes
-                                setTimeout(() => {
-                                    loader.style.display = 'none';
-                                }, 900);
-                            }, 800);
-                        }, 150);
+                                loader.style.display = 'none';
+                            }, 900);
+                        }, 1800); // 1.8 seconds clear reading pause
                     }
                 }
 
-                // Small initial pause before typing starts
-                setTimeout(typeNextLetter, 200);
-            }, 120); // Crisp pause at 100%
+                // Initial pause after left swash appears, then start cursive writing
+                setTimeout(typeNextLetter, 280);
+            }, 180); // Crisp pause at 100%
         }
     }
 
@@ -157,48 +176,84 @@ function initParticleCanvas() {
     });
 
     const particles = [];
-    const particleCount = Math.min(Math.floor(width / 20), 60);
+    const particleCount = Math.max(75, Math.min(Math.floor(width / 11), 140));
+
+    const colorPalette = [
+        'rgba(245, 158, 11, ',   // Rich Gold
+        'rgba(251, 191, 36, ',   // Warm Amber
+        'rgba(224, 122, 42, ',   // Bronze Copper
+        'rgba(253, 230, 138, ',  // Light Champagne Sparkle
+        'rgba(217, 119, 6, '     // Deep Golden Amber
+    ];
 
     for (let i = 0; i < particleCount; i++) {
         particles.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.4,
-            vy: (Math.random() - 0.5) * 0.4,
-            radius: Math.random() * 2 + 1,
-            color: Math.random() > 0.5 ? 'rgba(139, 92, 246, ' : 'rgba(6, 182, 212, ',
-            alpha: Math.random() * 0.5 + 0.2
+            vx: (Math.random() - 0.5) * 0.35,
+            vy: (Math.random() - 0.5) * 0.35,
+            radius: Math.random() < 0.72 ? (Math.random() * 1.3 + 0.7) : (Math.random() * 1.8 + 1.6),
+            color: colorPalette[Math.floor(Math.random() * colorPalette.length)],
+            baseAlpha: Math.random() * 0.45 + 0.3,
+            pulseSpeed: Math.random() * 0.003 + 0.0015,
+            pulseOffset: Math.random() * Math.PI * 2
         });
     }
 
-    function animate() {
+    let mouse = { x: -1000, y: -1000, radius: 100 };
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    }, { passive: true });
+    window.addEventListener('mouseleave', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+    });
+
+    function animate(now) {
         ctx.clearRect(0, 0, width, height);
 
         particles.forEach((p, index) => {
             p.x += p.vx;
             p.y += p.vy;
 
+            // Screen wrap
             if (p.x < 0) p.x = width;
             if (p.x > width) p.x = 0;
             if (p.y < 0) p.y = height;
             if (p.y > height) p.y = 0;
 
+            // Subtle mouse repulsion
+            const mdx = p.x - mouse.x;
+            const mdy = p.y - mouse.y;
+            const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+            if (mdist < mouse.radius && mdist > 0) {
+                const force = (1 - mdist / mouse.radius) * 1.1;
+                p.x += (mdx / mdist) * force;
+                p.y += (mdy / mdist) * force;
+            }
+
+            // Twinkle pulse effect
+            const alphaPulse = p.baseAlpha + Math.sin((now || performance.now()) * p.pulseSpeed + p.pulseOffset) * 0.18;
+            const alpha = Math.max(0.15, Math.min(0.85, alphaPulse));
+
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            ctx.fillStyle = p.color + p.alpha + ')';
+            ctx.fillStyle = p.color + alpha + ')';
             ctx.fill();
 
+            // Connect nearby dots with delicate golden lines
             for (let j = index + 1; j < particles.length; j++) {
                 const p2 = particles[j];
                 const dx = p.x - p2.x;
                 const dy = p.y - p2.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
 
-                if (dist < 120) {
+                if (dist < 90) {
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(p2.x, p2.y);
-                    ctx.strokeStyle = `rgba(139, 92, 246, ${0.15 * (1 - dist / 120)})`;
+                    ctx.strokeStyle = `rgba(224, 122, 42, ${0.11 * (1 - dist / 90)})`;
                     ctx.lineWidth = 0.6;
                     ctx.stroke();
                 }
@@ -208,7 +263,49 @@ function initParticleCanvas() {
         requestAnimationFrame(animate);
     }
 
-    animate();
+    requestAnimationFrame(animate);
+}
+
+/* ---------- ROYAL BACKGROUND INTERACTIVE SPOTLIGHT & PARALLAX ---------- */
+function initRoyalBackgroundInteraction() {
+    const bgImage = document.getElementById('royal-bg-image');
+    const bgSpotlight = document.getElementById('royal-bg-spotlight');
+    if (!bgImage && !bgSpotlight) return;
+
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let isMoving = false;
+
+    window.addEventListener('mousemove', (e) => {
+        const normX = (e.clientX / window.innerWidth) - 0.5;
+        const normY = (e.clientY / window.innerHeight) - 0.5;
+        targetX = normX * 24; // Subtle 24px parallax
+        targetY = normY * 24;
+        if (!isMoving) {
+            isMoving = true;
+            requestAnimationFrame(updateBackground);
+        }
+    }, { passive: true });
+
+    function updateBackground() {
+        currentX += (targetX - currentX) * 0.08;
+        currentY += (targetY - currentY) * 0.08;
+
+        if (bgSpotlight) {
+            bgSpotlight.style.transform = `translate(calc(-50% + ${currentX * 1.5}px), calc(-50% + ${currentY * 1.5}px))`;
+        }
+        if (bgImage) {
+            bgImage.style.transform = `translate(${-currentX * 0.4}px, ${-currentY * 0.4}px) scale(1.02)`;
+        }
+
+        if (Math.abs(targetX - currentX) > 0.08 || Math.abs(targetY - currentY) > 0.08) {
+            requestAnimationFrame(updateBackground);
+        } else {
+            isMoving = false;
+        }
+    }
 }
 
 /* ---------- 2. TYPEWRITER EFFECT ---------- */
@@ -1111,29 +1208,14 @@ function playSuccessChime() {
     });
 }
 
-/* ---------- 14. THEME PICKER ---------- */
+/* ---------- 14. THEME SYSTEM ---------- */
 function initThemePicker() {
-    const pills = document.querySelectorAll('.theme-pill');
-    const savedTheme = localStorage.getItem('tarini_portfolio_theme') || 'violet';
-
-    setTheme(savedTheme);
-
-    pills.forEach(pill => {
-        pill.addEventListener('click', () => {
-            const theme = pill.getAttribute('data-theme');
-            setTheme(theme);
-            playSynthSound(500, 0.04, 'sine');
-        });
-    });
+    setTheme('brown-orange');
 }
 
 function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('tarini_portfolio_theme', theme);
-
-    document.querySelectorAll('.theme-pill').forEach(p => {
-        p.classList.toggle('active', p.getAttribute('data-theme') === theme);
-    });
+    document.documentElement.setAttribute('data-theme', theme || 'brown-orange');
+    localStorage.setItem('tarini_portfolio_theme', theme || 'brown-orange');
 }
 
 /* ---------- 15. 3D PARALLAX CARD TILT ---------- */
@@ -1198,7 +1280,7 @@ function initDeveloperTerminal() {
                 responseHTML = `<div class="term-line output-line">Email: <span class="text-cyan">t.tarini2009@gmail.com</span> | Location: Odisha, India | Status: <span class="text-emerald">Open for Hire!</span></div>`;
                 break;
             case 'theme':
-                responseHTML = `<div class="term-line output-line">Themes available: <span class="text-pink">violet</span>, <span class="text-emerald">emerald</span>, <span class="text-cyan">ocean</span>, <span class="text-pink">crimson</span>. Use the theme picker in navbar!</div>`;
+                responseHTML = `<div class="term-line output-line">Themes available: <span class="text-pink">brown-orange</span>, <span class="text-emerald">emerald</span>, <span class="text-cyan">ocean</span>, <span class="text-pink">crimson</span>. Use the theme picker in navbar!</div>`;
                 break;
             case 'clear':
                 body.innerHTML = '';
@@ -1248,7 +1330,7 @@ function launchConfetti() {
     let height = (canvas.height = window.innerHeight);
 
     const pieces = [];
-    const colors = ['#8b5cf6', '#06b6d4', '#ec4899', '#10b981', '#f59e0b', '#ffffff'];
+    const colors = ['#A35011', '#c25e17', '#f59e0b', '#ea580c', '#fbbf24', '#ffffff'];
 
     for (let i = 0; i < 90; i++) {
         pieces.push({
