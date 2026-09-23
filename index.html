@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap"
         rel="stylesheet" />
 
     <!-- Font Awesome 6 Icons -->
@@ -22,7 +22,53 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body class="intro-active">
+
+    <!-- ===== MODERN INTRO LOADER & GREETING ===== -->
+    <div id="intro-loader" class="intro-loader" aria-label="Loading portfolio">
+        <div class="intro-bg-glow"></div>
+        <div class="intro-content">
+            <!-- Stage 1: Circular Progress & Percentage -->
+            <div id="intro-stage-progress" class="intro-stage intro-stage-progress">
+                <div class="intro-circle-wrapper">
+                    <svg class="intro-svg" viewBox="0 0 140 140" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="introGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#8b5cf6" />
+                                <stop offset="100%" stop-color="#06b6d4" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Background circular track -->
+                        <circle class="intro-circle-bg" cx="70" cy="70" r="58" />
+                        <!-- Animated glowing progress bar -->
+                        <circle id="intro-progress-bar" class="intro-circle-bar" cx="70" cy="70" r="58" />
+                    </svg>
+                    <div class="intro-center-text">
+                        <span id="intro-percent" class="intro-percent">0</span><span class="intro-percent-sign">%</span>
+                    </div>
+                </div>
+                <div class="intro-status">
+                    <span class="intro-pulse-dot"></span>
+                    <span class="intro-status-text">Loading portfolio</span>
+                </div>
+            </div>
+
+            <!-- Stage 2: Large Modern "Hello" Greeting with Letter-by-Letter Reveal -->
+            <div id="intro-stage-greeting" class="intro-stage intro-stage-greeting" aria-hidden="true">
+                <div class="intro-greeting-inner">
+                    <div class="intro-greeting-eyebrow">
+                        <span class="intro-eyebrow-line"></span>
+                        <span>Welcome</span>
+                        <span class="intro-eyebrow-line"></span>
+                    </div>
+                    <h1 class="intro-greeting-title" id="intro-greeting-title">
+                        <span id="intro-typed-text"></span><span id="intro-accent-dot" class="intro-accent-dot">.</span><span class="intro-type-cursor" id="intro-type-cursor"></span>
+                    </h1>
+                    <p class="intro-greeting-sub" id="intro-greeting-sub">Tarini Prasad Pati &bull; Portfolio</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Custom Neon Cursor Glow & Spotlight -->
     <div id="cursor-dot" class="cursor-dot"></div>

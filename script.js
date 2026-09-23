@@ -3,6 +3,7 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+    initIntroLoader();
     initParticleCanvas();
     initTypewriter();
     initScrollProgress();
@@ -21,6 +22,109 @@ document.addEventListener('DOMContentLoaded', () => {
     init3DTiltCards();
     initConfettiCanvas();
 });
+
+/* ---------- 0. MODERN INTRO LOADER ENGINE ---------- */
+function initIntroLoader() {
+    const loader = document.getElementById('intro-loader');
+    if (!loader) return;
+
+    const percentEl = document.getElementById('intro-percent');
+    const progressBar = document.getElementById('intro-progress-bar');
+    const stageProgress = document.getElementById('intro-stage-progress');
+    const stageGreeting = document.getElementById('intro-stage-greeting');
+
+    const radius = 58;
+    const circumference = 2 * Math.PI * radius; // ≈ 364.42
+
+    if (progressBar) {
+        progressBar.style.strokeDasharray = `${circumference}`;
+        progressBar.style.strokeDashoffset = `${circumference}`;
+    }
+
+    // Ensure scrolling is disabled during intro
+    document.body.classList.add('intro-active');
+
+    // Smooth percentage counter using requestAnimationFrame
+    const duration = 1250; // 1.25s for fast & snappy animation
+    const startTime = performance.now();
+
+    function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+    }
+
+    function animateProgress(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeOutCubic(progress);
+        const currentPercent = Math.floor(eased * 100);
+
+        if (percentEl) {
+            percentEl.textContent = currentPercent;
+        }
+
+        if (progressBar) {
+            const offset = circumference - (eased * circumference);
+            progressBar.style.strokeDashoffset = offset;
+        }
+
+        if (progress < 1) {
+            requestAnimationFrame(animateProgress);
+        } else {
+            // Guarantee 100% display
+            if (percentEl) percentEl.textContent = '100';
+            if (progressBar) progressBar.style.strokeDashoffset = '0';
+
+            // Transition to "Hello" greeting
+            setTimeout(() => {
+                if (stageProgress) stageProgress.classList.add('fade-out');
+                if (stageGreeting) stageGreeting.classList.add('active');
+
+                const typedEl = document.getElementById('intro-typed-text');
+                const dotEl = document.getElementById('intro-accent-dot');
+                const cursorEl = document.getElementById('intro-type-cursor');
+                const subEl = document.getElementById('intro-greeting-sub');
+
+                const greetingWord = 'Hello';
+                let charIndex = 0;
+                const typingSpeed = 140; // Smooth, deliberate letter-by-letter speed
+
+                function typeNextLetter() {
+                    if (charIndex < greetingWord.length) {
+                        if (typedEl) {
+                            typedEl.textContent += greetingWord.charAt(charIndex);
+                        }
+                        charIndex++;
+                        setTimeout(typeNextLetter, typingSpeed);
+                    } else {
+                        // Finished typing "Hello"
+                        setTimeout(() => {
+                            // Reveal glowing accent dot and subtext
+                            if (dotEl) dotEl.classList.add('visible');
+                            if (cursorEl) cursorEl.style.display = 'none';
+                            if (subEl) subEl.classList.add('visible');
+
+                            // Comfortable reading pause before revealing homepage
+                            setTimeout(() => {
+                                loader.classList.add('intro-exit');
+                                document.body.classList.remove('intro-active');
+
+                                // Clean up and disable loader after transition completes
+                                setTimeout(() => {
+                                    loader.style.display = 'none';
+                                }, 900);
+                            }, 800);
+                        }, 150);
+                    }
+                }
+
+                // Small initial pause before typing starts
+                setTimeout(typeNextLetter, 200);
+            }, 120); // Crisp pause at 100%
+        }
+    }
+
+    requestAnimationFrame(animateProgress);
+}
 
 /* ---------- 1. PARTICLE CANVAS ANIMATION ---------- */
 function initParticleCanvas() {
